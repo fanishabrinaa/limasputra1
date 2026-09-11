@@ -1,0 +1,316 @@
+@import 'tailwindcss';
+@import '../../vendor/livewire/flux/dist/flux.css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../vendor/livewire/flux-pro/stubs/**/*.blade.php';
+@source '../../vendor/livewire/flux/stubs/**/*.blade.php';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --color-zinc-50: #fafafa;
+    --color-zinc-100: #f5f5f5;
+    --color-zinc-200: #e5e5e5;
+    --color-zinc-300: #d4d4d4;
+    --color-zinc-400: #a3a3a3;
+    --color-zinc-500: #737373;
+    --color-zinc-600: #525252;
+    --color-zinc-700: #404040;
+    --color-zinc-800: #262626;
+    --color-zinc-900: #171717;
+    --color-zinc-950: #0a0a0a;
+
+    --color-accent: var(--color-neutral-800);
+    --color-accent-content: var(--color-neutral-800);
+    --color-accent-foreground: var(--color-white);
+}
+
+@layer theme {
+    .dark {
+        --color-accent: var(--color-white);
+        --color-accent-content: var(--color-white);
+        --color-accent-foreground: var(--color-neutral-800);
+    }
+}
+
+@layer base {
+
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+[data-flux-field]:not(ui-radio, ui-checkbox) {
+    @apply grid gap-2;
+}
+
+[data-flux-label] {
+    @apply  !mb-0 !leading-tight;
+}
+
+input:focus[data-flux-control],
+textarea:focus[data-flux-control],
+select:focus[data-flux-control] {
+    @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+/* Motion layer for the public site. */
+.lp-site nav {
+    animation: lpNavDrop 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.lp-page-content {
+    animation: lpPageReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.lp-site footer {
+    animation: lpFooterReveal 0.9s ease-out both;
+}
+
+.lp-site .lp-hero-image {
+    animation: lpHeroDrift 14s ease-in-out infinite alternate;
+}
+
+.lp-site .lp-card-image {
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s ease;
+}
+
+.lp-site .group:hover .lp-card-image {
+    transform: scale(1.08) rotate(0.5deg);
+    filter: saturate(1.12) contrast(1.03);
+}
+
+.lp-site .lp-motion-card {
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease, border-color 0.35s ease;
+}
+
+.lp-site .lp-motion-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 20px 42px rgba(15, 23, 42, 0.14);
+}
+
+.lp-site .lp-content-image {
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s ease;
+}
+
+.lp-site .lp-motion-card:hover .lp-content-image,
+.lp-site .group:hover .lp-content-image {
+    transform: scale(1.06);
+    filter: saturate(1.1);
+}
+
+.lp-site .lp-motion-button {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.lp-site .lp-motion-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(190, 24, 93, 0.2);
+}
+
+.lp-site .lp-pulse-line {
+    animation: lpPulseLine 2.8s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes lpPulseLine {
+    0%, 100% { opacity: 0.65; transform: scaleX(0.82); }
+    50% { opacity: 1; transform: scaleX(1); }
+}
+
+@keyframes lpNavDrop {
+    from {
+        opacity: 0;
+        transform: translateY(-18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lpPageReveal {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lpFooterReveal {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes lpHeroDrift {
+    from {
+        transform: scale(1.05) translate3d(-0.5%, -0.5%, 0);
+    }
+
+    to {
+        transform: scale(1.1) translate3d(0.5%, 0.5%, 0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .lp-site *,
+    .lp-site *::before,
+    .lp-site *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* \[:where(&)\]:size-4 {
+    @apply size-4;
+} */
+/* ================================
+   ANIMASI WEBSITE LIMAS PUTRA
+================================ */
+
+/* Fade Up */
+.lp-fade-up {
+    animation: lpFadeUp 0.8s ease-out both;
+}
+
+@keyframes lpFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade In */
+.lp-fade-in {
+    animation: lpFadeIn 0.8s ease-out both;
+}
+
+@keyframes lpFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Floating */
+.lp-floating {
+    animation: lpFloating 3s ease-in-out infinite;
+}
+
+@keyframes lpFloating {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* Card Hover */
+.lp-card {
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.lp-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+}
+
+/* Image Zoom */
+.lp-image-zoom {
+    overflow: hidden;
+}
+
+.lp-image-zoom img {
+    transition: transform 0.6s ease;
+}
+
+.lp-image-zoom:hover img {
+    transform: scale(1.08);
+}
+
+/* Delay */
+.lp-delay-1 {
+    animation-delay: 100ms;
+}
+
+.lp-delay-2 {
+    animation-delay: 200ms;
+}
+
+.lp-delay-3 {
+    animation-delay: 300ms;
+}
+
+.lp-delay-4 {
+    animation-delay: 400ms;
+}
+
+.lp-delay-5 {
+    animation-delay: 500ms;
+}
+
+.lp-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.lp-scroll.lp-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.lp-scroll {
+    transition-delay: var(--delay, 0ms);
+}
+.lp-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+    transition-delay: var(--delay, 0ms);
+}
+
+.lp-scroll.lp-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
