@@ -32,10 +32,10 @@
             {{ \App\Models\Setting::get('katalog_deskripsi', 'Limas Putra telah berpengalaman lebih dari satu dekade dalam menyediakan jasa transportasi pariwisata. Seluruh armada kami dirawat secara berkala untuk memastikan performa mesin yang prima dan interior yang senantiasa bersih.') }}
         </p>
         <div class="grid grid-cols-2 gap-3 text-sm text-slate-700">
-            <div class="flex items-center gap-2">✅ Supir Berpengalaman</div>
-            <div class="flex items-center gap-2">❄️ AC Super Dingin</div>
-            <div class="flex items-center gap-2">📶 Fasilitas Wi-Fi</div>
-            <div class="flex items-center gap-2">💺 Kursi Ergonomis</div>
+            <div class="flex items-center gap-2">Supir Berpengalaman</div>
+            <div class="flex items-center gap-2">AC Super Dingin</div>
+            <div class="flex items-center gap-2">Fasilitas Wi-Fi</div>
+            <div class="flex items-center gap-2">Kursi Ergonomis</div>
         </div>
     </div>
     <div class="grid grid-cols-2 gap-4">
@@ -62,19 +62,27 @@
                         @endif
                     </div>
                     <div class="p-4">
-                        <h3 class="font-bold text-lg">{{ $item->nama_bus }}</h3>
-                        <p class="text-sm text-slate-500 mb-3">👥 Kapasitas: {{ $item->kapasitas }} Seats</p>
+    <h3 class="font-bold text-lg">{{ $item->nama_bus }}</h3>
 
-                        <div class="flex justify-between items-center">
-                            <span class="text-rose-700 text-sm font-semibold">
-                               Hubungi Untuk Harga
-                            </span>
-                            <a href="{{ route('armada.detail', $item->id) }}"
-                               class="bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold px-4 py-2 rounded-lg">
-                                Lihat Detail
-                            </a>
-                        </div>
-                    </div>
+    <p class="text-sm text-slate-500 mb-2">
+        Kapasitas standar: {{ $item->kapasitas }} Seats
+    </p>
+
+    <div class="inline-flex items-center gap-1.5 text-xs text-rose-700 bg-rose-50 px-2.5 py-1.5 rounded-md mb-4">
+        <span>Bisa pesan lebih dari 40 kursi</span>
+    </div>
+
+    <div class="flex justify-between items-center">
+        <span class="text-rose-700 text-sm font-semibold">
+            Hubungi Untuk Harga
+        </span>
+
+        <a href="{{ route('armada.detail', $item->id) }}"
+           class="bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold px-4 py-2 rounded-lg">
+            Lihat Detail
+        </a>
+    </div>
+</div>
                 </div>
             @empty
                 <p class="col-span-3 text-center text-slate-400">Belum ada armada tersedia.</p>

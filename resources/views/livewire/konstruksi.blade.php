@@ -35,11 +35,8 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 @forelse ($layanan as $item)
-                    <div class="bg-slate-50 hover:bg-white border border-slate-200/80 rounded-2xl p-7 shadow-sm hover:shadow-xl hover:border-rose-200 hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
+                    <div class="lp-scroll-zoom bg-slate-50 hover:bg-white border border-slate-200/80 rounded-2xl p-7 shadow-sm hover:shadow-xl hover:border-rose-200 hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between">
                         <div>
-                            <div class="w-12 h-12 bg-rose-100 text-rose-700 rounded-xl flex items-center justify-center mb-6 font-bold text-xl group-hover:bg-rose-700 group-hover:text-white transition-colors duration-300">
-                                🏗️
-                            </div>
                             <h3 class="font-bold text-slate-900 text-xl mb-3 group-hover:text-rose-700 transition-colors">{{ $item['title'] }}</h3>
                             <p class="text-slate-600 text-sm leading-relaxed">{{ $item['desc'] }}</p>
                         </div>

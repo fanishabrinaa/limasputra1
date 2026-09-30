@@ -10,8 +10,12 @@ class Publik extends Component
     public string $kategoriAktif = 'Semua Produk';
 
     public array $kategoriList = [
-        'Semua Produk', 'Semen & Perekat', 'Bata & Pasir',
-        'Besi & Baja', 'Cat & Finishing', 'Atap & Plafon',
+        'Semua Produk', 'Material Bangunan',
+        'Struktur & Konstruksi',
+        'Atap & Plafon',
+        'Lantai & Dinding',
+        'Cat & Finishing',
+        'Perlengkapan & Perkakas',
     ];
 
     public function setKategori(string $kategori)

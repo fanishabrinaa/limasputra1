@@ -11,7 +11,6 @@ class ProdukBangunan extends Model
     protected $fillable = [
         'nama_produk',
         'kategori',
-        'harga',
         'satuan',
         'stok',
         'sku',

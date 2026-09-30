@@ -64,9 +64,96 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Quiet motion for the admin workspace. */
+.lp-admin-sidebar {
+    animation: lpAdminSidebarIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.lp-admin-topbar {
+    animation: lpAdminTopbarIn 0.5s ease-out both;
+}
+
+.lp-admin-content {
+    animation: lpPageReveal 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.lp-admin-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.lp-admin-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(15, 23, 42, 0.1);
+}
+
+.lp-admin aside nav a {
+    transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+}
+
+.lp-admin aside nav a:hover {
+    transform: translateX(4px);
+}
+
+@keyframes lpAdminSidebarIn {
+    from {
+        opacity: 0;
+        transform: translateX(-14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes lpAdminTopbarIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Motion layer for the public site. */
+.lp-site {
+    position: relative;
+    overflow-x: hidden;
+}
+
+.lp-site::before,
+.lp-site::after {
+    content: "";
+    position: fixed;
+    inset: auto auto 18% -8%;
+    width: 22rem;
+    height: 22rem;
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgba(244, 114, 182, 0.26), rgba(244, 114, 182, 0));
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+    animation: lpAmbientShift 18s ease-in-out infinite alternate;
+}
+
+.lp-site::after {
+    inset: 12% -6% auto auto;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.18), rgba(59, 130, 246, 0));
+    animation-delay: 1.3s;
+}
+
 .lp-site nav {
-    animation: lpNavDrop 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    position: relative;
+    z-index: 50;
+}
+
+.lp-site main,
+.lp-site footer {
+    position: relative;
+    z-index: 1;
 }
 
 .lp-page-content {
@@ -79,6 +166,14 @@ html {
 
 .lp-site .lp-hero-image {
     animation: lpHeroDrift 14s ease-in-out infinite alternate;
+}
+
+.lp-ambient-orb {
+    position: absolute;
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgba(251, 113, 133, 0.18), rgba(251, 113, 133, 0));
+    filter: blur(60px);
+    animation: lpAmbientShift 16s ease-in-out infinite alternate;
 }
 
 .lp-site .lp-card-image {
@@ -172,6 +267,43 @@ html {
     }
 }
 
+@keyframes lpAmbientShift {
+    0% {
+        transform: translate3d(-1%, 2%, 0) scale(0.96);
+    }
+
+    100% {
+        transform: translate3d(4%, -4%, 0) scale(1.08);
+    }
+}
+
+@keyframes lpFloatSoft {
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: translate3d(0, -10px, 0);
+    }
+}
+
+@keyframes lpShimmer {
+    0% {
+        transform: translateX(-120%) skewX(-18deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateX(240%) skewX(-18deg);
+        opacity: 0;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
@@ -179,7 +311,10 @@ html {
 
     .lp-site *,
     .lp-site *::before,
-    .lp-site *::after {
+    .lp-site *::after,
+    .lp-admin *,
+    .lp-admin *::before,
+    .lp-admin *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         scroll-behavior: auto !important;
@@ -298,9 +433,11 @@ html {
     opacity: 1;
     transform: translateY(0);
 }
+
 .lp-scroll {
     transition-delay: var(--delay, 0ms);
 }
+
 .lp-scroll {
     opacity: 0;
     transform: translateY(40px);
@@ -313,4 +450,153 @@ html {
 .lp-scroll.lp-visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+.lp-reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    transition-delay: var(--delay, 0ms);
+}
+
+.lp-reveal.lp-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.lp-site .lp-hover-lift {
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.lp-site .lp-hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 34px rgba(15, 23, 42, 0.12);
+}
+
+.lp-float-soft {
+    animation: lpFloatSoft 7s ease-in-out infinite;
+}
+
+.lp-site .lp-button-glow {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.lp-site .lp-button-glow::before {
+    content: "";
+    position: absolute;
+    inset: -100% auto -100% -30%;
+    width: 48%;
+    background: linear-gradient(110deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.48), rgba(255, 255, 255, 0));
+    transform: skewX(-18deg);
+    animation: lpShimmer 2.8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.lp-site .lp-button-glow > * {
+    position: relative;
+    z-index: 1;
+}
+/* ================================
+   VARIASI ANIMASI SCROLL TAMBAHAN
+================================ */
+
+/* Masuk dari KIRI */
+.lp-scroll-left {
+    opacity: 0;
+    transform: translateX(-45px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition-delay: var(--delay, 0ms);
+}
+
+.lp-scroll-left.lp-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Masuk dari KANAN */
+.lp-scroll-right {
+    opacity: 0;
+    transform: translateX(45px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition-delay: var(--delay, 0ms);
+}
+
+.lp-scroll-right.lp-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Zoom in dengan efek "pop" */
+.lp-scroll-zoom {
+    opacity: 0;
+    transform: scale(0.88);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition-delay: var(--delay, 0ms);
+}
+
+.lp-scroll-zoom.lp-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Rotate + fade (buat elemen aksen/icon/badge kecil) */
+.lp-scroll-rotate {
+    opacity: 0;
+    transform: translateY(30px) rotate(-4deg);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--delay, 0ms);
+}
+
+.lp-scroll-rotate.lp-visible {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+}
+/* Cursor-following glow effect untuk hero section */
+
+.lp-hero-glow {
+    position: relative;
+    overflow: hidden;
+
+    --cursor-x: 50%;
+    --cursor-y: 50%;
+}
+
+.lp-hero-glow::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: radial-gradient(
+        circle 180px at var(--cursor-x) var(--cursor-y),
+        rgba(244, 63, 94, 0.18),
+        rgba(244, 63, 94, 0.08) 35%,
+        transparent 70%
+    );
+
+    pointer-events: none;
+    z-index: 1;
+
+    transition: opacity 0.25s ease;
+}
+
+@media (hover: none), (pointer: coarse) {
+    .lp-hero-glow::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: radial-gradient(
+        circle 500px at var(--cursor-x) var(--cursor-y),
+        rgba(244, 63, 94, 0.06),
+        rgba(244, 63, 94, 0.025) 45%,
+        transparent 50%
+    );
+
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.25s ease;
+}
 }

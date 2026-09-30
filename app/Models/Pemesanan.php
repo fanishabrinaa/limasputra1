@@ -21,6 +21,7 @@ class Pemesanan extends Model
         'catatan',
         'status',
         'alasan_penolakan',
+        'jemputan',
     ];
     public function testimoni()
 {

@@ -1,4 +1,6 @@
 <div>
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <!-- HERO HEADER SECTION -->
     <div class="relative bg-slate-950 text-white py-20 px-6 md:px-12 text-center overflow-hidden border-b border-slate-900">
         <div class="absolute inset-0 z-0">
@@ -38,7 +40,7 @@
             <div class="lg:col-span-5 space-y-5">
 
                 <!-- Card 1: Alamat -->
-                <div class="lp-scroll lp-motion-card bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm flex items-start gap-4 hover:shadow-md transition-shadow">
+                <div class="lp-scroll-zoom lp-motion-card bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm flex items-start gap-4 hover:shadow-md transition-shadow">
                     <div class="w-12 h-12 bg-rose-50 text-rose-700 rounded-xl flex items-center justify-center flex-shrink-0">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
@@ -54,7 +56,7 @@
                 </div>
 
                 <!-- Card 2: Telepon & Email -->
-                <div class="lp-scroll lp-motion-card bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm flex items-start gap-4 hover:shadow-md transition-shadow">
+                <div class="lp-scroll-zoom lp-motion-card bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm flex items-start gap-4 hover:shadow-md transition-shadow">
                     <div class="w-12 h-12 bg-rose-50 text-rose-700 rounded-xl flex items-center justify-center flex-shrink-0">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
@@ -68,7 +70,7 @@
                 </div>
 
                 <!-- Card 3: Jam Operasional -->
-                <div class="lp-scroll lp-motion-card bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm flex items-start gap-4 hover:shadow-md transition-shadow">
+                <div class="lp-scroll-zoom lp-motion-card bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm flex items-start gap-4 hover:shadow-md transition-shadow">
                     <div class="w-12 h-12 bg-rose-50 text-rose-700 rounded-xl flex items-center justify-center flex-shrink-0">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -89,25 +91,40 @@
                     </div>
                 </div>
 
-                <!-- Card 4: Ikuti Kami (Sosial Media) -->
-                <div class="lp-scroll lp-motion-card bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm">
+               <!-- Card 4: Ikuti Kami (Sosial Media) -->
+                <div class="lp-scroll-zoom lp-motion-card bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm">
                     <h3 class="text-sm font-bold text-slate-900 mb-3">Sosial Media Resmi</h3>
+
                     <div class="flex flex-col gap-2.5">
+
                         @if (\App\Models\Setting::get('instagram'))
-                            <a href="{{ \App\Models\Setting::get('instagram') }}" target="_blank"
-                               class="flex items-center gap-3 bg-rose-50 hover:bg-rose-100 text-rose-700 rounded-xl px-4 py-2.5 text-xs font-semibold transition">
-                                <span class="text-base"></span> Instagram: @po_putra_limas
+                            <a href="{{ \App\Models\Setting::get('instagram') }}"
+                            target="_blank"
+                            class="flex items-center gap-3 bg-rose-50 hover:bg-rose-100 text-rose-700 rounded-xl px-4 py-2.5 text-xs font-semibold transition">
+
+                                <i class="fa-brands fa-instagram text-lg"></i>
+
+                                <span>Instagram: @po_putra_limas</span>
                             </a>
                         @endif
+
                         @if (\App\Models\Setting::get('tiktok'))
-                            <a href="{{ \App\Models\Setting::get('tiktok') }}" target="_blank"
-                               class="flex items-center gap-3 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl px-4 py-2.5 text-xs font-semibold transition">
-                                <span class="text-base"></span> TikTok: PO PUTRA LIMAS
+                            <a href="{{ \App\Models\Setting::get('tiktok') }}"
+                            target="_blank"
+                            class="flex items-center gap-3 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl px-4 py-2.5 text-xs font-semibold transition">
+
+                                <i class="fa-brands fa-tiktok text-lg"></i>
+
+                                <span>TikTok: PO PUTRA LIMAS</span>
                             </a>
                         @endif
+
                         @if (!\App\Models\Setting::get('instagram') && !\App\Models\Setting::get('tiktok'))
-                            <p class="text-xs text-slate-400">Belum ada link sosial media yang ditambahkan.</p>
+                            <p class="text-xs text-slate-400">
+                                Belum ada link sosial media yang ditambahkan.
+                            </p>
                         @endif
+
                     </div>
                 </div>
 
@@ -125,7 +142,7 @@
 
             <!-- RIGHT COLUMN: FORMULIR PESAN -->
             <div class="lg:col-span-7">
-                <div class="lp-scroll lp-motion-card bg-white p-8 rounded-3xl border-t-4 border-t-rose-700 border-x border-b border-slate-200/80 shadow-md">
+                <div class="lp-scroll-zoom lp-motion-card bg-white p-8 rounded-3xl border-t-4 border-t-rose-700 border-x border-b border-slate-200/80 shadow-md">
                     <h2 class="text-2xl font-extrabold text-slate-900 mb-2">Kirim Pesan</h2>
                     <p class="text-sm text-slate-500 mb-6">Isi formulir di bawah ini untuk berkonsultasi atau mengajukan pertanyaan.</p>
 
@@ -200,35 +217,50 @@
             </div>
         </div>
 
-        <!-- GOOGLE MAPS EMBED -->
-        <div class="mt-14 relative rounded-3xl overflow-hidden border border-slate-200 shadow-md h-80">
-            <iframe
-                class="w-full h-full border-0 filter opacity-95 contrast-110"
-                src="https://www.google.com/maps?q={{ urlencode($lokasi_peta ?: $alamat ?: 'Indonesia') }}&output=embed"
-                allowfullscreen=""
-                loading="lazy">
-            </iframe>
+        <!-- GOOGLE MAPS + STREET VIEW 360 (SATU BOX, TOGGLE) -->
+        <div class="mt-14 relative rounded-3xl overflow-hidden border border-slate-200 shadow-md"
+             x-data="{ tampilan: 'peta' }">
 
-            <div class="absolute bottom-5 left-5 bg-white/95 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-slate-100 max-w-sm">
-                <h4 class="text-sm font-bold text-slate-900 mb-1">Lokasi Kantor Kami</h4>
-                <p class="text-xs text-slate-600 leading-relaxed mb-3">
-                    {{ $alamat ?: 'Alamat belum diisi oleh admin.' }}
-                </p>
-                <a href="https://www.google.com/maps?q={{ urlencode($lokasi_peta ?: $alamat ?: 'Indonesia') }}" target="_blank"
-                   class="text-xs text-rose-700 font-bold hover:underline inline-flex items-center gap-1">
-                    Buka di Google Maps ↗
-                </a>
+            <!-- Header + Toggle -->
+            <div class="bg-slate-900 text-white text-xs font-bold px-5 py-3.5 flex items-center justify-between">
+                <span class="flex items-center gap-2">
+                    <i class="fa-solid fa-location-dot"></i>
+                    Lokasi Kantor Kami
+                </span>
+
+                <div class="flex bg-white/10 rounded-full p-1 gap-1">
+                    <button type="button" @click="tampilan = 'peta'"
+                            :class="tampilan === 'peta' ? 'bg-rose-600 text-white' : 'text-slate-300 hover:text-white'"
+                            class="text-[11px] font-bold px-3.5 py-1.5 rounded-full transition">
+                        Peta
+                    </button>
+                    <button type="button" @click="tampilan = '360'"
+                            :class="tampilan === '360' ? 'bg-rose-600 text-white' : 'text-slate-300 hover:text-white'"
+                            class="text-[11px] font-bold px-3.5 py-1.5 rounded-full transition">
+                        360°
+                    </button>
+                </div>
+            </div>
+
+            <div class="relative h-96">
+                <!-- Peta biasa -->
+                <iframe x-show="tampilan === 'peta'"
+                    class="w-full h-full border-0 filter opacity-95 contrast-110"
+                    src="https://www.google.com/maps?q={{ urlencode($lokasi_peta ?: $alamat ?: 'Indonesia') }}&output=embed"
+                    allowfullscreen=""
+                    loading="lazy">
+                </iframe>
+
+                <!-- Street View 360 -->
+                <iframe x-show="tampilan === '360'"
+                    class="w-full h-full border-0"
+                    src="https://www.google.com/maps/embed?pb=!4v1790150378912!6m8!1m7!1sSdOwCGwbaMI4nBDfyIvuMQ!2m2!1d-6.526724263666305!2d110.7172761595802!3f155.99275!4f0!5f0.7820865974627469"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin">
+                </iframe>
             </div>
         </div>
-    </main>
 
-    <!-- FLOATING WHATSAPP BUTTON -->
-    <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $telepon ?? '') }}" target="_blank"
-       class="fixed bottom-6 right-6 bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-3 rounded-full shadow-2xl flex items-center gap-2.5 text-sm font-semibold z-50 transition transform hover:scale-105 group">
-        <span class="w-2.5 h-2.5 rounded-full bg-white animate-ping"></span>
-        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-            <path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.124.553 4.197 1.603 6.01L0 24l6.126-1.606a11.968 11.968 0 005.905 1.551h.005c6.645 0 12.03-5.385 12.03-12.031C24.066 5.385 18.676 0 12.031 0zm0 22.029h-.004a9.96 9.96 0 01-5.081-1.396l-.364-.216-3.774.99.1008-3.677-.238-.379a9.98 9.98 0 01-1.533-5.316c0-5.509 4.483-9.992 9.992-9.992 5.508 0 9.991 4.483 9.991 9.992 0 5.508-4.483 9.992-9.991 9.992z"/>
-        </svg>
-        <span>Tanya via WhatsApp</span>
-    </a>
+    </main>
 </div>

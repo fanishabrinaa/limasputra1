@@ -3,6 +3,7 @@
 namespace App\Livewire\Galeri;
 
 use App\Models\Galeri;
+use App\Models\Setting;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -10,6 +11,11 @@ class Index extends Component
 {
     use WithFileUploads;
 
+    // ===== Konten Teks Hero =====
+    public $galeri_judul;
+    public $galeri_deskripsi;
+
+    // ===== Form Foto Galeri =====
     public $galeri_id;
     public $judul, $deskripsi;
     public $kategori = 'Bus Pariwisata';
@@ -18,13 +24,19 @@ class Index extends Component
     public $isEdit = false;
     public $showForm = false;
 
+    public function mount()
+    {
+        $this->galeri_judul     = Setting::get('galeri_judul', 'Galeri Dokumentasi');
+        $this->galeri_deskripsi = Setting::get('galeri_deskripsi', 'Jelajahi kumpulan foto kegiatan, armada bus pariwisata, material toko bangunan, dan pengerjaan proyek konstruksi Limas Putra.');
+    }
+
     protected function rules()
     {
         return [
             'judul'     => 'required|string|max:255',
             'kategori'  => 'required|in:Bus Pariwisata,Toko Bangunan,Konstruksi',
             'deskripsi' => 'nullable|string',
-           'gambar'      => $this->isEdit ? 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048' : 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'gambar'    => $this->isEdit ? 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048' : 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
         ];
     }
 
@@ -35,6 +47,21 @@ class Index extends Component
         ])->layout('layouts.admin');
     }
 
+    // ===== Aksi: Konten Teks Hero =====
+    public function simpanTeks()
+    {
+        $this->validate([
+            'galeri_judul'     => 'required|string',
+            'galeri_deskripsi' => 'required|string',
+        ]);
+
+        Setting::set('galeri_judul', $this->galeri_judul);
+        Setting::set('galeri_deskripsi', $this->galeri_deskripsi);
+
+        session()->flash('message', 'Konten Galeri berhasil disimpan.');
+    }
+
+    // ===== Aksi: Form Foto Galeri =====
     public function bukaForm()
     {
         $this->reset(['galeri_id', 'judul', 'deskripsi', 'gambar', 'gambar_lama', 'isEdit']);
@@ -54,10 +81,10 @@ class Index extends Component
         Galeri::updateOrCreate(
             ['id' => $this->galeri_id],
             [
-                'judul' => $this->judul,
-                'kategori' => $this->kategori,
+                'judul'     => $this->judul,
+                'kategori'  => $this->kategori,
                 'deskripsi' => $this->deskripsi,
-                'gambar' => $path,
+                'gambar'    => $path,
             ]
         );
 
@@ -73,8 +100,8 @@ class Index extends Component
         $this->kategori    = $data->kategori;
         $this->deskripsi   = $data->deskripsi;
         $this->gambar_lama = $data->gambar;
-        $this->isEdit = true;
-        $this->showForm = true;
+        $this->isEdit      = true;
+        $this->showForm    = true;
     }
 
     public function hapus($id)

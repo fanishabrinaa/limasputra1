@@ -1,5 +1,4 @@
-<div class="bg-slate-950 border-b border-slate-900 px-6 md:px-12 py-3.5 flex justify-center items-center gap-3 overflow-x-auto relative z-20">
-    
+<div class="bg-slate-950 border-b border-slate-800 px-6 md:px-12 py-4 flex justify-center items-center gap-3 overflow-x-auto relative z-20 shadow-md">
     <!-- TAB 1: BUS PARIWISATA -->
     <a href="{{ route('armada.katalog') }}"
        class="px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold whitespace-nowrap transition-all duration-300 border flex items-center gap-2

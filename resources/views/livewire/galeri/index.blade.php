@@ -5,8 +5,8 @@
             <span class="inline-flex items-center gap-2 bg-rose-500/10 border border-rose-500/30 text-rose-600 text-[11px] font-bold px-3 py-1 rounded-full mb-2">
                 ADMIN PANEL
             </span>
-            <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900">Kelola Galeri Dokumentasi</h1>
-            <p class="text-sm text-slate-500 mt-1">Unggah dan atur dokumentasi foto armada bus, toko bangunan, dan proyek konstruksi.</p>
+            <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900">Kelola Halaman Galeri</h1>
+            <p class="text-sm text-slate-500 mt-1">Edit teks hero dan kelola dokumentasi foto armada bus, toko bangunan, dan proyek konstruksi.</p>
         </div>
 
         @if (!$showForm)
@@ -28,7 +28,36 @@
         </div>
     @endif
 
-    <!-- DAFTAR GALERI / FORM -->
+    <!-- ====================================================== -->
+    <!-- KONTEN TEKS HERO GALERI -->
+    <!-- ====================================================== -->
+    @if (!$showForm)
+        <div class="bg-white border border-slate-200/80 rounded-3xl p-6 md:p-8 shadow-sm">
+            <h2 class="text-lg font-bold text-slate-900 mb-4">Konten Teks Hero</h2>
+            <div class="space-y-4 max-w-2xl">
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Judul Hero</label>
+                    <input type="text" wire:model="galeri_judul" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:bg-white focus:ring-2 focus:ring-rose-500/20 focus:border-rose-700 outline-none">
+                    @error('galeri_judul') <span class="text-rose-600 text-xs mt-1 block font-medium">{{ $message }}</span> @enderror
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Deskripsi Hero</label>
+                    <textarea wire:model="galeri_deskripsi" rows="3" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:bg-white focus:ring-2 focus:ring-rose-500/20 focus:border-rose-700 outline-none"></textarea>
+                    @error('galeri_deskripsi') <span class="text-rose-600 text-xs mt-1 block font-medium">{{ $message }}</span> @enderror
+                </div>
+            </div>
+
+            <div class="pt-4 mt-2">
+                <button wire:click="simpanTeks" class="bg-rose-700 hover:bg-rose-800 text-white text-xs font-bold px-6 py-3 rounded-xl shadow-md">
+                    Simpan Perubahan Teks
+                </button>
+            </div>
+        </div>
+    @endif
+
+    <!-- ====================================================== -->
+    <!-- DAFTAR GALERI / FORM FOTO -->
+    <!-- ====================================================== -->
     @if (!$showForm)
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             @forelse ($daftarGaleri as $item)

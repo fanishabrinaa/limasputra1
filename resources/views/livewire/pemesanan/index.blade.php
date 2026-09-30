@@ -43,15 +43,22 @@
                         <span class="bg-slate-100 text-slate-800 px-2.5 py-1 rounded-lg border border-slate-200 font-mono font-bold text-xs">
                             {{ $item->kode_pemesanan }}
                         </span>
-                        <span @class([
-                            'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold border flex-shrink-0',
-                            'bg-amber-50 text-amber-700 border-amber-200' => $item->status === 'Menunggu',
-                            'bg-blue-50 text-blue-700 border-blue-200' => $item->status === 'Disetujui',
-                            'bg-emerald-50 text-emerald-700 border-emerald-200' => $item->status === 'Selesai',
-                            'bg-rose-50 text-rose-700 border-rose-200' => $item->status === 'Ditolak',
-                        ])>
-                            {{ $item->status }}
-                        </span>
+                        <div class="flex flex-col items-end gap-1">
+                            <span @class([
+                                'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold border flex-shrink-0',
+                                'bg-amber-50 text-amber-700 border-amber-200' => $item->status === 'Menunggu',
+                                'bg-blue-50 text-blue-700 border-blue-200' => $item->status === 'Disetujui',
+                                'bg-emerald-50 text-emerald-700 border-emerald-200' => $item->status === 'Selesai',
+                                'bg-rose-50 text-rose-700 border-rose-200' => $item->status === 'Ditolak',
+                            ])>
+                                {{ $item->status }}
+                            </span>
+                            @if ($item->status === 'Menunggu' && $item->created_at->diffInHours(now()) > 24)
+                                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-500 border border-slate-200">
+                                    ⚠ Lama
+                                </span>
+                            @endif
+                        </div>
                     </div>
 
                     <div>
@@ -60,28 +67,28 @@
                     </div>
 
                     <div class="grid grid-cols-2 gap-3 text-xs bg-slate-50 rounded-xl p-3">
-                        <td class="p-4">
-    <div class="flex items-center gap-3">
-        @if ($item->armada && $item->armada->gambar)
-            <img src="{{ Storage::url($item->armada->gambar) }}"
-                 alt="{{ $item->armada->nama_bus }}"
-                 class="w-12 h-9 object-cover rounded-lg border border-slate-200">
-        @else
-            <div class="w-12 h-9 bg-slate-100 rounded-lg flex items-center justify-center text-lg">
-                🚌
-            </div>
-        @endif
+                        <div class="col-span-2">
+                            <div class="flex items-center gap-3">
+                                @if ($item->armada && $item->armada->gambar)
+                                    <img src="{{ Storage::url($item->armada->gambar) }}"
+                                         alt="{{ $item->armada->nama_bus }}"
+                                         class="w-12 h-9 object-cover rounded-lg border border-slate-200">
+                                @else
+                                    <div class="w-12 h-9 bg-slate-100 rounded-lg flex items-center justify-center text-lg">
+                                        🚌
+                                    </div>
+                                @endif
 
-        <div>
-            <p class="font-bold text-slate-800">
-                {{ $item->armada->kode_bus ?? '-' }}
-            </p>
-            <p class="text-[11px] text-slate-500">
-                {{ $item->armada->nama_bus ?? '-' }}
-            </p>
-        </div>
-    </div>
-</td>
+                                <div>
+                                    <p class="font-bold text-slate-800">
+                                        {{ $item->armada->kode_bus ?? '-' }}
+                                    </p>
+                                    <p class="text-[11px] text-slate-500">
+                                        {{ $item->armada->nama_bus ?? '-' }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                         <div>
                             <span class="text-slate-400 block text-[10px] uppercase font-bold mb-0.5">Penumpang</span>
                             <span class="font-bold text-rose-700">{{ $item->jumlah_penumpang }} Orang</span>
@@ -171,28 +178,28 @@
                                 <p class="font-bold text-slate-900 text-sm mb-0.5">{{ $item->nama_pemesan }}</p>
                                 <p class="text-[11px] text-slate-400 font-medium">{{ $item->no_hp }}</p>
                             </td>
-                         <td class="p-4">
-    <div class="flex items-center gap-3">
-        @if ($item->armada && $item->armada->gambar)
-            <img src="{{ Storage::url($item->armada->gambar) }}"
-                 alt="{{ $item->armada->nama_bus }}"
-                 class="w-12 h-9 object-cover rounded-lg border border-slate-200">
-        @else
-            <div class="w-12 h-9 bg-slate-100 rounded-lg flex items-center justify-center text-lg">
-                🚌
-            </div>
-        @endif
+                            <td class="p-4">
+                                <div class="flex items-center gap-3">
+                                    @if ($item->armada && $item->armada->gambar)
+                                        <img src="{{ Storage::url($item->armada->gambar) }}"
+                                             alt="{{ $item->armada->nama_bus }}"
+                                             class="w-12 h-9 object-cover rounded-lg border border-slate-200">
+                                    @else
+                                        <div class="w-12 h-9 bg-slate-100 rounded-lg flex items-center justify-center text-lg">
+                                            🚌
+                                        </div>
+                                    @endif
 
-        <div>
-            <p class="font-bold text-slate-800">
-                {{ $item->armada->kode_bus ?? '-' }}
-            </p>
-            <p class="text-[11px] text-slate-500">
-                {{ $item->armada->nama_bus ?? '-' }}
-            </p>
-        </div>
-    </div>
-</td>
+                                    <div>
+                                        <p class="font-bold text-slate-800">
+                                            {{ $item->armada->kode_bus ?? '-' }}
+                                        </p>
+                                        <p class="text-[11px] text-slate-500">
+                                            {{ $item->armada->nama_bus ?? '-' }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </td>
                             <td class="p-4 text-slate-600 font-medium whitespace-nowrap">
                                 <div class="flex items-center gap-1.5">
                                     <span>{{ \Carbon\Carbon::parse($item->tanggal_berangkat)->format('d M Y') }}</span>
@@ -224,6 +231,11 @@
                                     @endif
                                     {{ $item->status }}
                                 </span>
+                                @if ($item->status === 'Menunggu' && $item->created_at->diffInHours(now()) > 24)
+                                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-500 border border-slate-200 mt-1.5">
+                                        ⚠ Lama
+                                    </span>
+                                @endif
                                 @if ($item->status === 'Ditolak' && $item->alasan_penolakan)
                                     <p class="text-[11px] text-rose-600 font-medium mt-1.5 leading-tight max-w-[160px] bg-rose-50/50 p-2 rounded-lg border border-rose-100">
                                         {{ $item->alasan_penolakan }}
@@ -257,129 +269,136 @@
                             </td>
                         </tr>
                         <!-- MODAL DETAIL PEMESANAN -->
-<dialog id="detail-{{ $item->id }}"
-        class="backdrop:bg-slate-950/60 backdrop:backdrop-blur-sm rounded-3xl p-0 w-full max-w-lg shadow-2xl">
+                        <dialog id="detail-{{ $item->id }}"
+                                class="backdrop:bg-slate-950/60 backdrop:backdrop-blur-sm rounded-3xl p-0 w-full max-w-lg shadow-2xl">
 
-    <div class="bg-white rounded-3xl overflow-hidden">
+                            <div class="bg-white rounded-3xl overflow-hidden">
 
-        <!-- FOTO BUS -->
-        <div class="relative h-56 bg-slate-100">
-            @if ($item->armada && $item->armada->gambar)
-                <img src="{{ Storage::url($item->armada->gambar) }}"
-                     alt="{{ $item->armada->nama_bus }}"
-                     class="w-full h-full object-cover">
-            @else
-                <div class="w-full h-full flex items-center justify-center text-5xl">
-                    🚌
-                </div>
-            @endif
+                                <!-- FOTO BUS -->
+                                <div class="relative h-56 bg-slate-100">
+                                    @if ($item->armada && $item->armada->gambar)
+                                        <img src="{{ Storage::url($item->armada->gambar) }}"
+                                             alt="{{ $item->armada->nama_bus }}"
+                                             class="w-full h-full object-cover">
+                                    @else
+                                        <div class="w-full h-full flex items-center justify-center text-5xl">
+                                            🚌
+                                        </div>
+                                    @endif
 
-            <button
-                onclick="document.getElementById('detail-{{ $item->id }}').close()"
-                class="absolute top-4 right-4 w-9 h-9 bg-white/90 hover:bg-white rounded-full text-slate-600 font-bold shadow">
-                ✕
-            </button>
-        </div>
+                                    <button
+                                        onclick="document.getElementById('detail-{{ $item->id }}').close()"
+                                        class="absolute top-4 right-4 w-9 h-9 bg-white/90 hover:bg-white rounded-full text-slate-600 font-bold shadow">
+                                        ✕
+                                    </button>
+                                </div>
 
-        <!-- DETAIL -->
-        <div class="p-6">
+                                <!-- DETAIL -->
+                                <div class="p-6">
 
-            <div class="mb-5">
-                <p class="text-[10px] uppercase tracking-wider font-bold text-rose-500">
-                    Detail Pemesanan
-                </p>
+                                    <div class="mb-5">
+                                        <p class="text-[10px] uppercase tracking-wider font-bold text-rose-500">
+                                            Detail Pemesanan
+                                        </p>
 
-                <h3 class="text-xl font-extrabold text-slate-900 mt-1">
-                    {{ $item->armada->nama_bus ?? 'Armada Tidak Ditemukan' }}
-                </h3>
+                                        <h3 class="text-xl font-extrabold text-slate-900 mt-1">
+                                            {{ $item->armada->nama_bus ?? 'Armada Tidak Ditemukan' }}
+                                        </h3>
 
-                <p class="text-xs text-slate-400 font-mono mt-1">
-                    {{ $item->kode_pemesanan }}
-                </p>
-            </div>
+                                        <p class="text-xs text-slate-400 font-mono mt-1">
+                                            {{ $item->kode_pemesanan }}
+                                        </p>
+                                    </div>
 
-            <div class="grid grid-cols-2 gap-3">
+                                    <div class="grid grid-cols-2 gap-3">
 
-                <div class="bg-slate-50 rounded-xl p-3">
-                    <p class="text-[10px] uppercase font-bold text-slate-400">
-                        Pemesan
-                    </p>
-                    <p class="text-sm font-bold text-slate-800 mt-1">
-                        {{ $item->nama_pemesan }}
-                    </p>
-                </div>
+                                        <div class="bg-slate-50 rounded-xl p-3">
+                                            <p class="text-[10px] uppercase font-bold text-slate-400">
+                                                Pemesan
+                                            </p>
+                                            <p class="text-sm font-bold text-slate-800 mt-1">
+                                                {{ $item->nama_pemesan }}
+                                            </p>
+                                        </div>
 
-                <div class="bg-slate-50 rounded-xl p-3">
-                    <p class="text-[10px] uppercase font-bold text-slate-400">
-                        WhatsApp
-                    </p>
-                    <p class="text-sm font-bold text-slate-800 mt-1">
-                        {{ $item->no_hp }}
-                    </p>
-                </div>
+                                        <div class="bg-slate-50 rounded-xl p-3">
+                                            <p class="text-[10px] uppercase font-bold text-slate-400">
+                                                WhatsApp
+                                            </p>
+                                            <p class="text-sm font-bold text-slate-800 mt-1">
+                                                {{ $item->no_hp }}
+                                            </p>
+                                        </div>
 
-                <div class="bg-slate-50 rounded-xl p-3">
-                    <p class="text-[10px] uppercase font-bold text-slate-400">
-                        Tanggal Sewa
-                    </p>
-                    <p class="text-sm font-bold text-slate-800 mt-1">
-                        {{ \Carbon\Carbon::parse($item->tanggal_berangkat)->format('d M Y') }}
-                        →
-                        {{ \Carbon\Carbon::parse($item->tanggal_pulang)->format('d M Y') }}
-                    </p>
-                </div>
+                                        <div class="bg-slate-50 rounded-xl p-3">
+                                            <p class="text-[10px] uppercase font-bold text-slate-400">
+                                                Tanggal Sewa
+                                            </p>
+                                            <p class="text-sm font-bold text-slate-800 mt-1">
+                                                {{ \Carbon\Carbon::parse($item->tanggal_berangkat)->format('d M Y') }}
+                                                →
+                                                {{ \Carbon\Carbon::parse($item->tanggal_pulang)->format('d M Y') }}
+                                            </p>
+                                        </div>
 
-                <div class="bg-rose-50 rounded-xl p-3">
-                    <p class="text-[10px] uppercase font-bold text-rose-400">
-                        Penumpang
-                    </p>
-                    <p class="text-sm font-bold text-rose-700 mt-1">
-                        {{ $item->jumlah_penumpang }} Orang
-                    </p>
-                </div>
+                                        <div class="bg-rose-50 rounded-xl p-3">
+                                            <p class="text-[10px] uppercase font-bold text-rose-400">
+                                                Penumpang
+                                            </p>
+                                            <p class="text-sm font-bold text-rose-700 mt-1">
+                                                {{ $item->jumlah_penumpang }} Orang
+                                            </p>
+                                        </div>
 
-            </div>
+                                    </div>
 
-            <!-- STATUS -->
-            <div class="mt-4 flex items-center justify-between">
-                <span class="text-xs font-bold text-slate-400 uppercase">
-                    Status
-                </span>
+                                    <!-- STATUS -->
+                                    <div class="mt-4 flex items-center justify-between">
+                                        <span class="text-xs font-bold text-slate-400 uppercase">
+                                            Status
+                                        </span>
 
-                <span class="px-3 py-1 rounded-full text-xs font-bold
-                    @if($item->status === 'Menunggu')
-                        bg-amber-50 text-amber-700
-                    @elseif($item->status === 'Disetujui')
-                        bg-blue-50 text-blue-700
-                    @elseif($item->status === 'Selesai')
-                        bg-emerald-50 text-emerald-700
-                    @else
-                        bg-rose-50 text-rose-700
-                    @endif">
-                    {{ $item->status }}
-                </span>
-            </div>
+                                        <div class="flex flex-col items-end gap-1">
+                                            <span class="px-3 py-1 rounded-full text-xs font-bold
+                                                @if($item->status === 'Menunggu')
+                                                    bg-amber-50 text-amber-700
+                                                @elseif($item->status === 'Disetujui')
+                                                    bg-blue-50 text-blue-700
+                                                @elseif($item->status === 'Selesai')
+                                                    bg-emerald-50 text-emerald-700
+                                                @else
+                                                    bg-rose-50 text-rose-700
+                                                @endif">
+                                                {{ $item->status }}
+                                            </span>
+                                            @if ($item->status === 'Menunggu' && $item->created_at->diffInHours(now()) > 24)
+                                                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-500 border border-slate-200">
+                                                    ⚠ Lama
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
 
-            @if ($item->status === 'Ditolak' && $item->alasan_penolakan)
-                <div class="mt-4 bg-rose-50 border border-rose-100 rounded-xl p-3">
-                    <p class="text-[10px] uppercase font-bold text-rose-400">
-                        Alasan Penolakan
-                    </p>
-                    <p class="text-xs text-rose-700 mt-1">
-                        {{ $item->alasan_penolakan }}
-                    </p>
-                </div>
-            @endif
+                                    @if ($item->status === 'Ditolak' && $item->alasan_penolakan)
+                                        <div class="mt-4 bg-rose-50 border border-rose-100 rounded-xl p-3">
+                                            <p class="text-[10px] uppercase font-bold text-rose-400">
+                                                Alasan Penolakan
+                                            </p>
+                                            <p class="text-xs text-rose-700 mt-1">
+                                                {{ $item->alasan_penolakan }}
+                                            </p>
+                                        </div>
+                                    @endif
 
-            <button
-                onclick="document.getElementById('detail-{{ $item->id }}').close()"
-                class="w-full mt-6 bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-xl text-xs font-bold transition">
-                Tutup
-            </button>
+                                    <button
+                                        onclick="document.getElementById('detail-{{ $item->id }}').close()"
+                                        class="w-full mt-6 bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-xl text-xs font-bold transition">
+                                        Tutup
+                                    </button>
 
-        </div>
-    </div>
-</dialog>
+                                </div>
+                            </div>
+                        </dialog>
                     @empty
                         <tr>
                             <td colspan="7" class="p-12 text-center">

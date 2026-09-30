@@ -11,18 +11,19 @@ class Index extends Component
     use WithFileUploads;
 
     public $produk_id;
-    public $nama_produk, $kategori, $deskripsi, $harga;
+    public $nama_produk, $kategori, $deskripsi;
     public $gambar;
     public $gambar_lama;
     public $isEdit = false;
     public $showForm = false;
 
     public array $kategoriList = [
-        'Semen & Perekat',
-        'Bata & Pasir',
-        'Besi & Baja',
-        'Cat & Finishing',
+        'Material Bangunan',
+        'Struktur & Konstruksi',
         'Atap & Plafon',
+        'Lantai & Dinding',
+        'Cat & Finishing',
+        'Perlengkapan & Perkakas',
     ];
 
     protected function rules()
@@ -30,7 +31,6 @@ class Index extends Component
         return [
             'nama_produk' => 'required|string|max:255',
             'kategori'    => 'required|string|max:255',
-            'harga'       => 'required|numeric',
             'deskripsi'   => 'required|string',
             'gambar'      => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ];
@@ -50,7 +50,6 @@ class Index extends Component
             'nama_produk',
             'kategori',
             'deskripsi',
-            'harga',
             'gambar',
             'gambar_lama',
             'isEdit'
@@ -74,7 +73,6 @@ class Index extends Component
             [
                 'nama_produk' => $this->nama_produk,
                 'kategori'    => $this->kategori,
-                'harga'       => $this->harga,
                 'deskripsi'   => $this->deskripsi,
                 'gambar'      => $path,
             ]
@@ -92,7 +90,6 @@ class Index extends Component
         $this->produk_id   = $data->id;
         $this->nama_produk = $data->nama_produk;
         $this->kategori    = $data->kategori;
-        $this->harga       = $data->harga;
         $this->deskripsi   = $data->deskripsi;
         $this->gambar_lama = $data->gambar;
 

@@ -32,7 +32,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
             <!-- Card 1: Total Armada -->
-            <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-rose-200 transition-all duration-300 flex flex-col justify-between group">
+            <div class="lp-admin-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-rose-200 transition-all duration-300 flex flex-col justify-between group">
                 <div class="flex items-center justify-between mb-3">
                     <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Total Armada</span>
                 </div>
@@ -48,7 +48,7 @@
             </div>
 
             <!-- Card 2: Total Pemesanan -->
-            <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-rose-200 transition-all duration-300 flex flex-col justify-between group">
+            <div class="lp-admin-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-rose-200 transition-all duration-300 flex flex-col justify-between group">
                 <div class="flex items-center justify-between mb-3">
                     <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Total Pemesanan</span>
                 </div>
@@ -64,7 +64,7 @@
             </div>
 
             <!-- Card 3: Total Produk -->
-            <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-rose-200 transition-all duration-300 flex flex-col justify-between group">
+            <div class="lp-admin-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-rose-200 transition-all duration-300 flex flex-col justify-between group">
                 <div class="flex items-center justify-between mb-3">
                     <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Total Produk</span>
                 </div>
@@ -80,7 +80,7 @@
             </div>
 
             <!-- Card 4: Total Galeri -->
-            <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-rose-200 transition-all duration-300 flex flex-col justify-between group">
+            <div class="lp-admin-card bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-rose-200 transition-all duration-300 flex flex-col justify-between group">
                 <div class="flex items-center justify-between mb-3">
                     <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Total Galeri</span>
                 </div>
@@ -102,7 +102,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
         <!-- LEFT CHART: TREN PEMESANAN (LINE CHART) -->
-        <div class="lg:col-span-2 bg-white rounded-3xl p-7 border border-slate-200/80 shadow-sm">
+        <div class="lp-admin-card lg:col-span-2 bg-white rounded-3xl p-7 border border-slate-200/80 shadow-sm">
             <div class="flex items-center justify-between mb-6">
                 <div>
                     <h3 class="text-lg font-extrabold text-slate-900">Grafik Tren Pemesanan</h3>
@@ -116,7 +116,7 @@
         </div>
 
         <!-- RIGHT CHART: DISTRIBUSI LAYANAN (DONUT CHART) -->
-        <div class="bg-white rounded-3xl p-7 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+        <div class="lp-admin-card bg-white rounded-3xl p-7 border border-slate-200/80 shadow-sm flex flex-col justify-between">
             <div class="mb-4">
                 <h3 class="text-lg font-extrabold text-slate-900">Distribusi Layanan</h3>
                 <p class="text-xs text-slate-500">Persentase permintaan per unit bisnis</p>
@@ -146,7 +146,7 @@
     </div>
 
     <!-- AKSI CEPAK ADMIN -->
-    <div class="bg-white rounded-3xl p-7 border border-slate-200/80 shadow-sm">
+    <div class="lp-admin-card bg-white rounded-3xl p-7 border border-slate-200/80 shadow-sm">
         <h3 class="text-lg font-extrabold text-slate-900 mb-1">Aksi Cepat Admin</h3>
         <p class="text-xs text-slate-500 mb-6">Pintasan praktis kelola modul operasional</p>
 

@@ -16,7 +16,7 @@ class Beranda extends Component
             'deskripsi'       => Setting::get('deskripsi', 'Menghadirkan solusi terpadu dalam sektor konstruksi, retail material bangunan, dan transportasi pariwisata dengan standar profesionalisme tertinggi.'),
             'jumlahArmada'    => Armada::count(),
             'jumlahProduk'    => ProdukBangunan::count(),
-            'statTahunPengalaman' => Setting::get('stat_tahun_pengalaman', '15+'),
+            'statTahunPengalaman' => Setting::get('stat_tahun_pengalaman', '20+'),
             'statPelangganPuas'   => Setting::get('stat_pelanggan_puas', '2.5k'),
             'mengapaKami'         => Setting::getJson('mengapa_kami', []),
         ])->layout('layouts.app');

@@ -26,6 +26,40 @@
         </div>
     @endif
 
+    <!-- ====================================================== -->
+    <!-- KONTEN TEKS HERO KATALOG -->
+    <!-- ====================================================== -->
+    @if (!$showForm)
+        <div class="bg-white border border-slate-200/80 rounded-3xl p-6 md:p-8 shadow-sm">
+            <h2 class="text-lg font-bold text-slate-900 mb-4">Konten Teks Hero Katalog</h2>
+            <div class="space-y-4 max-w-2xl">
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Judul Hero</label>
+                    <input type="text" wire:model="katalog_judul" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:bg-white focus:ring-2 focus:ring-rose-500/20 focus:border-rose-700 outline-none">
+                    @error('katalog_judul') <span class="text-rose-600 text-xs mt-1 block font-medium">{{ $message }}</span> @enderror
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Deskripsi Hero</label>
+                    <textarea wire:model="katalog_deskripsi" rows="3" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:bg-white focus:ring-2 focus:ring-rose-500/20 focus:border-rose-700 outline-none"></textarea>
+                    @error('katalog_deskripsi') <span class="text-rose-600 text-xs mt-1 block font-medium">{{ $message }}</span> @enderror
+                </div>
+            </div>
+
+            <div class="pt-4 mt-2">
+                <button wire:click="simpanTeks" class="bg-rose-700 hover:bg-rose-800 text-white text-xs font-bold px-6 py-3 rounded-xl shadow-md">
+                    Simpan Perubahan Teks
+                </button>
+            </div>
+        </div>
+    @endif
+    <!-- FLASH MESSAGE -->
+    @if (session()->has('message'))
+        <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 p-4 rounded-2xl flex items-center gap-3 shadow-sm">
+            <svg class="w-5 h-5 text-emerald-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <span class="text-sm font-semibold">{{ session('message') }}</span>
+        </div>
+    @endif
+
     @if (!$showForm)
         <!-- DATA TABLE CONTAINER -->
         <div class="bg-white border border-slate-200/80 rounded-3xl shadow-sm overflow-hidden">
@@ -142,12 +176,27 @@
             </div>
 
             <div>
-                <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-1">Kapasitas (orang)</label>
-                    <input type="number" wire:model="kapasitas" class="border border-slate-300 rounded-xl px-3 py-2.5 w-full">
-                    @error('kapasitas') <span class="text-rose-600 text-xs">{{ $message }}</span> @enderror
-                </div>
-            </div>
+    <label class="block text-sm font-semibold text-slate-700 mb-1">
+        Kapasitas Bus (orang)
+    </label>
+
+    <input
+        type="number"
+        wire:model="kapasitas"
+        min="40"
+        max="60"
+        class="border border-slate-300 rounded-xl px-3 py-2.5 w-full"
+        placeholder="Contoh: 40"
+    >
+
+    <p class="text-xs text-slate-400 mt-1">
+        Kapasitas standar bus adalah 40–60 orang.
+    </p>
+
+    @error('kapasitas')
+        <span class="text-rose-600 text-xs">{{ $message }}</span>
+    @enderror
+</div>
 
             <div>
                 <label class="block text-sm font-semibold text-slate-700 mb-1">Status</label>
@@ -179,11 +228,26 @@
             <div>
                 <label class="block text-sm font-semibold text-slate-700 mb-1">Galeri Foto Tambahan (boleh pilih banyak)</label>
                 <input type="file" wire:model="galeriBaru" multiple class="border border-slate-300 rounded-xl px-3 py-2.5 w-full text-sm">
-                <div class="flex gap-2 mt-2 flex-wrap">
-                    @foreach ($galeri_lama ?? [] as $g)
-                        <img src="{{ Storage::url($g) }}" class="w-16 h-16 object-cover rounded-xl">
-                    @endforeach
-                </div>
+                <div class="flex gap-3 mt-2 flex-wrap">
+    @foreach ($galeri_lama ?? [] as $index => $g)
+        <div class="relative">
+            <img
+                src="{{ Storage::url($g) }}"
+                class="w-20 h-20 object-cover rounded-xl"
+            >
+
+            <button
+                type="button"
+                wire:click="hapusGaleri({{ $index }})"
+                wire:confirm="Yakin mau menghapus foto ini?"
+                class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold shadow-md"
+                title="Hapus foto"
+            >
+                ×
+            </button>
+        </div>
+    @endforeach
+</div>
             </div>
 
             <div>

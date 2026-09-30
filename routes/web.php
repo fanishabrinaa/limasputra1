@@ -31,8 +31,11 @@ use App\Livewire\Testimoni\Index as TestimoniIndex;
 use App\Livewire\Setting\Gambar as SettingGambar;
 use App\Livewire\Pemesanan\Sukses as PemesananSukses;
 use App\Livewire\Setting\KontenKonstruksi;
+use App\Livewire\Setting\KontenBeranda;
+use App\Livewire\Profile\Index as ProfileIndex;
 
 // Route::view('/', 'welcome')->name('home');
+
 
 Route::middleware(['auth', 'verified'])->group(function () {
 
@@ -52,7 +55,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
     
     Route::middleware(['auth', 'admin'])->group(function () {
-        // semua route dashboard admin kamu di sini
+        Route::get('/setting/konten-unit-usaha', \App\Livewire\Setting\KontenUnitUsaha::class)->name('setting.konten-unit-usaha');
+        
     });
     Route::get('/armada-katalog', ArmadaKatalog::class)->name('armada.katalog');
     Route::middleware(['auth', 'admin'])->group(function () {
@@ -64,6 +68,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/pemesanan/{armadaId}', PemesananCreate::class)->name('pemesanan.create');
         Route::get('/pesanan-saya', PemesananRiwayat::class)->name('pemesanan.riwayat');
         Route::get('/pemesanan/{id}/sukses', PemesananSukses::class)->name('pemesanan.sukses');
+        Route::get('/profile', ProfileIndex::class)->name('profile');
     });
     // Publik
     Route::get('/', Beranda::class)->name('beranda');
@@ -94,6 +99,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/setting/konten', SettingKonten::class)->name('setting.konten');
     Route::get('/setting/gambar', SettingGambar::class)->name('setting.gambar');
     Route::get('/setting/konten-konstruksi', KontenKonstruksi::class)->name('setting.konten-konstruksi');
+    Route::get('/setting/konten-beranda', KontenBeranda::class)->name('setting.konten-beranda');
 });
 
 // require __DIR__.'/settings.php';
