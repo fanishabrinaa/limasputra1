@@ -1,13 +1,12 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH="/home/putralim/limasputra - deploy/"
-    - /bin/cp -R app "$DEPLOYPATH"
-    - /bin/cp -R bootstrap "$DEPLOYPATH"
-    - /bin/cp -R config "$DEPLOYPATH"
-    - /bin/cp -R database "$DEPLOYPATH"
-    - /bin/cp -R resources "$DEPLOYPATH"
-    - /bin/cp -R routes "$DEPLOYPATH"
-    - /bin/cp artisan "$DEPLOYPATH"
-    - /bin/cp composer.json "$DEPLOYPATH"
-    - /bin/cp composer.lock "$DEPLOYPATH"
+    - /bin/cp -R app /home/putralim/limasputra\ -\ deploy/
+    - /bin/cp -R bootstrap /home/putralim/limasputra\ -\ deploy/
+    - /bin/cp -R config /home/putralim/limasputra\ -\ deploy/
+    - /bin/cp -R database /home/putralim/limasputra\ -\ deploy/
+    - /bin/cp -R resources /home/putralim/limasputra\ -\ deploy/
+    - /bin/cp -R routes /home/putralim/limasputra\ -\ deploy/
+    - /bin/cp artisan /home/putralim/limasputra\ -\ deploy/
+    - /bin/cp composer.json /home/putralim/limasputra\ -\ deploy/
+    - /bin/cp composer.lock /home/putralim/limasputra\ -\ deploy/
