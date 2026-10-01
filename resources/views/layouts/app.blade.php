@@ -324,6 +324,60 @@
             </span>
         </a>
     @endif
-    @livewireScripts
+        @livewireScripts
+    <script>
+    (function () {
+        if (window.__autoScrollInit) return;
+        window.__autoScrollInit = true;
+
+        const pausedUntil = new WeakMap();
+        function animateScroll(el, to, duration) {
+    const from = el.scrollLeft;
+    const start = performance.now();
+    el.style.scrollSnapType = 'none'; // matikan snap sementara supaya tidak melawan animasi
+
+    function tick(now) {
+        const t = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - t, 3); // easeOutCubic
+        el.scrollLeft = from + (to - from) * ease;
+        if (t < 1) {
+            requestAnimationFrame(tick);
+        } else {
+            el.style.scrollSnapType = ''; // snap aktif lagi
+        }
+    }
+    requestAnimationFrame(tick);
+}
+
+        const pause = (e) => {
+            const s = e.target.closest && e.target.closest('[data-autoscroll]');
+            if (s) pausedUntil.set(s, Date.now() + 3000);
+        };
+        ['touchstart', 'touchmove', 'pointerdown', 'wheel'].forEach(ev =>
+            document.addEventListener(ev, pause, { passive: true })
+        );
+
+        setInterval(() => {
+            if (window.innerWidth >= 768) return; // desktop pakai grid
+
+            document.querySelectorAll('[data-autoscroll]').forEach(s => {
+                if (Date.now() < (pausedUntil.get(s) || 0)) return;
+
+                // hanya geser kalau carousel sedang terlihat di layar
+                const r = s.getBoundingClientRect();
+                if (r.bottom < 0 || r.top > window.innerHeight) return;
+
+                const cards = s.children;
+                const maxScroll = s.scrollWidth - s.clientWidth;
+                if (cards.length < 2 || maxScroll <= 0) return;
+
+                const step = cards[1].offsetLeft - cards[0].offsetLeft;
+                const next = s.scrollLeft >= maxScroll - 5 ? 0 : Math.min(s.scrollLeft + step, maxScroll);
+
+                s.scrollTo({ left: next, behavior: 'smooth' });
+            });
+        }, 2000);
+    })();
+    </script>
 </body>
 </html>

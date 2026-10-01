@@ -594,6 +594,8 @@ html {
         rgba(244, 63, 94, 0.025) 45%,
         transparent 50%
     );
+    .stat-label { color: #64748b; font-weight: 600; } /* slate-500 */
+    .stat-label-dark { color: #cbd5e1; font-weight: 600; } /* slate-300 */
 
     pointer-events: none;
     z-index: 1;

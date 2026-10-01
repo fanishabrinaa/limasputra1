@@ -191,7 +191,7 @@ $units = [
                     <p class="text-slate-500 text-sm sm:text-base max-w-xl mx-auto">Prinsip yang mengarahkan setiap keputusan dan tindakan kami dalam melayani Anda.</p>
                 </div>
 
-                <div class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                <div data-autoscroll class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                     @foreach($values as $val)
                         <div class="lp-motion-card lp-scroll-zoom flex-shrink-0 w-64 snap-start md:w-auto p-6 sm:p-8 bg-slate-50 hover:bg-white rounded-2xl border border-slate-200/80 text-center hover:shadow-xl hover:border-rose-200 transition-all duration-300 group" style="--delay: {{ $loop->index * 120 }}ms;">
                             <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-2 sm:mb-3">{{ $val['title'] }}</h3>
