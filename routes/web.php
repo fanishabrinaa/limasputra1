@@ -90,17 +90,78 @@ Route::get('/galeri-publik', GaleriPublik::class)->name('galeri.publik');
 
 // Sitemap untuk Google (publik, di luar grup admin)
 Route::get('/sitemap.xml', function () {
-    $names = ['beranda', 'unit-usaha', 'armada.katalog', 'produk.publik',
-              'konstruksi', 'galeri.publik', 'about', 'kontak'];
+    $armadas = \App\Models\Armada::select('id', 'updated_at')->get();
+    $produk = \App\Models\ProdukBangunan::select('id', 'updated_at')->get();
 
-    $xml  = '<?xml version="1.0" encoding="UTF-8"?>';
-    $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
-    foreach ($names as $name) {
-        $xml .= '<url><loc>' . route($name) . '</loc></url>';
+    $urls = [
+        [
+            'loc' => route('beranda'),
+            'lastmod' => null,
+        ],
+        [
+            'loc' => route('about'),
+            'lastmod' => null,
+        ],
+        [
+            'loc' => route('unit-usaha'),
+            'lastmod' => null,
+        ],
+        [
+            'loc' => route('armada.katalog'),
+            'lastmod' => null,
+        ],
+        [
+            'loc' => route('produk.publik'),
+            'lastmod' => null,
+        ],
+        [
+            'loc' => route('konstruksi'),
+            'lastmod' => null,
+        ],
+        [
+            'loc' => route('galeri.publik'),
+            'lastmod' => null,
+        ],
+        [
+            'loc' => route('kontak'),
+            'lastmod' => null,
+        ],
+    ];
+
+    // Tambahkan halaman detail setiap armada
+    foreach ($armadas as $armada) {
+        $urls[] = [
+            'loc' => route('armada.detail', $armada->id),
+            'lastmod' => $armada->updated_at,
+        ];
     }
+
+    // Tambahkan halaman detail setiap produk
+    foreach ($produk as $item) {
+        $urls[] = [
+            'loc' => route('produk.detail', $item->id),
+            'lastmod' => $item->updated_at,
+        ];
+    }
+
+    $xml = '<?xml version="1.0" encoding="UTF-8"?>';
+    $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+
+    foreach ($urls as $url) {
+        $xml .= '<url>';
+        $xml .= '<loc>' . htmlspecialchars($url['loc'], ENT_XML1, 'UTF-8') . '</loc>';
+
+        if ($url['lastmod']) {
+            $xml .= '<lastmod>' . $url['lastmod']->toAtomString() . '</lastmod>';
+        }
+
+        $xml .= '</url>';
+    }
+
     $xml .= '</urlset>';
 
-    return response($xml, 200, ['Content-Type' => 'application/xml']);
+    return response($xml, 200)
+        ->header('Content-Type', 'application/xml');
 });
 
 // Admin
