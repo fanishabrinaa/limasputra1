@@ -17,7 +17,7 @@
                 SOLUSI KONSTRUKSI & INFRASTRUKTUR
             </span>
             <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">
-                Jasa Konstruksi <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-rose-600">Limas Putra</span>
+                Jasa Konstruksi <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-rose-600">Putra Limas</span>
             </h1>
             <p class="text-slate-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-normal">
                 {{ $hero_desc }}

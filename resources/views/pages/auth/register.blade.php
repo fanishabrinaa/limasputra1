@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar - {{ \App\Models\Setting::get('nama_perusahaan', 'Limas Putra') }}</title>
+    <title>Daftar - {{ \App\Models\Setting::get('nama_perusahaan', 'Putra Limas') }}</title>
     @php
     $logoLogin = \App\Models\Setting::get('logo');
 @endphp
@@ -29,7 +29,7 @@
                 <div class="lg:hidden -mx-8 sm:-mx-10 -mt-8 sm:-mt-10 mb-8 relative overflow-hidden px-8 sm:px-10 pt-8 pb-10">
                     <img
                         src="{{ asset('images/login-limas-putra.png') }}"
-                        alt="Limas Putra"
+                        alt="Putra Limas"
                         class="absolute inset-0 w-full h-full object-cover"
                     >
                     <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/70"></div>
@@ -295,7 +295,7 @@
 
                 <img
                     src="{{ asset('images/login-limas-putra.png') }}"
-                    alt="Limas Putra - Bus Pariwisata, Toko Bangunan dan Jasa Konstruksi"
+                    alt="Putra Limas - Bus Pariwisata, Toko Bangunan dan Jasa Konstruksi"
                     class="absolute inset-0 w-full h-full object-cover"
                 >
 

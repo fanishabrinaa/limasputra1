@@ -1,7 +1,7 @@
 <div>
     <?php
     // --- DATA DINAMIS ---
-    $brand_name = "Limas Putra";
+    $brand_name = "Putra Limas";
     ?>
 
     <!-- Hero Section -->
@@ -12,10 +12,10 @@
 
         <div class="relative max-w-3xl z-10">
             <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">
-                Unit Usaha Limas Putra
+                Unit Usaha Putra Limas
             </h1>
             <p class="text-gray-300 text-sm md:text-base leading-relaxed">
-                Temukan berbagai layanan unggulan Limas Putra melalui tiga bidang usaha utama kami yang mengutamakan kualitas, profesionalisme, dan kepercayaan pelanggan.
+                Temukan berbagai layanan unggulan Putra Limas melalui tiga bidang usaha utama kami yang mengutamakan kualitas, profesionalisme, dan kepercayaan pelanggan.
             </p>
         </div>
     </section>
@@ -89,7 +89,7 @@
 
     <!-- Why Choose Us Section -->
     <section class="py-20 px-6 md:px-16 bg-gradient-to-b from-gray-50 to-indigo-50/30 text-center">
-        <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-12">Mengapa Memilih Limas Putra?</h2>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-12">Mengapa Memilih Putra Limas?</h2>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
             <!-- Feature 1 -->

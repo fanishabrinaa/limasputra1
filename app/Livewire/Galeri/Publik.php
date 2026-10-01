@@ -26,7 +26,7 @@ class Publik extends Component
         return view('livewire.galeri.publik', [
             'daftarGaleri'     => $query->get(),
             'galeri_judul'     => Setting::get('galeri_judul', 'Galeri Dokumentasi'),
-            'galeri_deskripsi' => Setting::get('galeri_deskripsi', 'Jelajahi kumpulan foto kegiatan, armada bus pariwisata, material toko bangunan, dan pengerjaan proyek konstruksi Limas Putra.'),
+            'galeri_deskripsi' => Setting::get('galeri_deskripsi', 'Jelajahi kumpulan foto kegiatan, armada bus pariwisata, material toko bangunan, dan pengerjaan proyek konstruksi Putra Limas.'),
         ])->layout('layouts.app');
     }
 }

@@ -72,7 +72,7 @@
             <div class="flex flex-col md:flex-row justify-between md:items-end mb-12 gap-4">
                 <div>
                     <h2 class="lp-scroll text-3xl font-bold text-white mb-3">{{ \App\Models\Setting::get('beranda_unitbisnis_judul', 'Unit Bisnis Strategis Kami') }}</h2>
-                    <p class="lp-scroll text-slate-400 max-w-xl text-base">{{ \App\Models\Setting::get('beranda_unitbisnis_paragraf', 'Limas Putra mengintegrasikan tiga pilar bisnis utama untuk mendukung kebutuhan mobilitas dan pembangunan infrastruktur di Indonesia.') }}</p>
+                    <p class="lp-scroll text-slate-400 max-w-xl text-base">{{ \App\Models\Setting::get('beranda_unitbisnis_paragraf', 'Putra Limas mengintegrasikan tiga pilar bisnis utama untuk mendukung kebutuhan mobilitas dan pembangunan infrastruktur di Indonesia.') }}</p>
                 </div>
                 <a href="{{ route('unit-usaha') }}" class="inline-flex items-center gap-2 text-rose-400 text-sm font-semibold hover:text-rose-300 transition-colors">
                     Lihat Semua Unit

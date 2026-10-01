@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>
-        Login - {{ \App\Models\Setting::get('nama_perusahaan', 'Limas Putra') }}
+        Login - {{ \App\Models\Setting::get('nama_perusahaan', 'Putra Limas') }}
     </title>
 
 @php
@@ -43,7 +43,7 @@
                 <!-- Gambar Full sebagai Background -->
                 <img
                     src="{{ asset('images/login-limas-putra.png') }}"
-                    alt="Limas Putra - Bus Pariwisata, Toko Bangunan dan Jasa Konstruksi"
+                    alt="Putra Limas - Bus Pariwisata, Toko Bangunan dan Jasa Konstruksi"
                     class="absolute inset-0 w-full h-full object-cover"
                 >
 
@@ -70,7 +70,7 @@
                     <!-- Gambar Full sebagai Background (mobile) -->
                     <img
                         src="{{ asset('images/login-limas-putra.png') }}"
-                        alt="Limas Putra - Bus Pariwisata, Toko Bangunan dan Jasa Konstruksi"
+                        alt="Putra Limas - Bus Pariwisata, Toko Bangunan dan Jasa Konstruksi"
                         class="absolute inset-0 w-full h-full object-cover"
                     >
 
@@ -86,7 +86,7 @@
                         >
                             <span class="w-2.5 h-2.5 rounded-full bg-white"></span>
 
-                            {{ \App\Models\Setting::get('nama_perusahaan', 'Limas Putra') }}
+                            {{ \App\Models\Setting::get('nama_perusahaan', 'Putra Limas') }}
                         </a>
 
 

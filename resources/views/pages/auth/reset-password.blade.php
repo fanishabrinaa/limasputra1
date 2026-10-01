@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-        Reset Password - {{ \App\Models\Setting::get('nama_perusahaan', 'Limas Putra') }}
+        Reset Password - {{ \App\Models\Setting::get('nama_perusahaan', 'Putra Limas') }}
     </title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -31,7 +31,7 @@
 
                 <img
                     src="{{ asset('images/login-limas-putra.png') }}"
-                    alt="Limas Putra - Bus Pariwisata, Toko Bangunan dan Jasa Konstruksi"
+                    alt="Putra Limas - Bus Pariwisata, Toko Bangunan dan Jasa Konstruksi"
                     class="absolute inset-0 w-full h-full object-cover"
                 >
 
@@ -42,7 +42,7 @@
                     class="relative z-10 inline-flex items-center gap-2 text-xl font-black text-white tracking-tight hover:opacity-90 transition w-fit p-10"
                 >
                     <span class="w-3 h-3 rounded-full bg-white"></span>
-                    {{ \App\Models\Setting::get('nama_perusahaan', 'Limas Putra') }}
+                    {{ \App\Models\Setting::get('nama_perusahaan', 'Putra Limas') }}
                 </a>
 
                 <div class="relative z-10 text-white p-10">
@@ -71,7 +71,7 @@
 
                     <img
                         src="{{ asset('images/login-limas-putra.png') }}"
-                        alt="Limas Putra"
+                        alt="Putra Limas"
                         class="absolute inset-0 w-full h-full object-cover"
                     >
 
@@ -83,7 +83,7 @@
                             class="inline-flex items-center gap-2 text-lg font-black text-white tracking-tight hover:opacity-90 transition"
                         >
                             <span class="w-2.5 h-2.5 rounded-full bg-white"></span>
-                            {{ \App\Models\Setting::get('nama_perusahaan', 'Limas Putra') }}
+                            {{ \App\Models\Setting::get('nama_perusahaan', 'Putra Limas') }}
                         </a>
 
                         <p class="text-slate-200/80 text-xs font-medium mt-3">

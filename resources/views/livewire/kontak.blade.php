@@ -23,7 +23,7 @@
                 LAYANAN PELANGGAN
             </span>
             <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
-                Hubungi <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-rose-600">Limas Putra</span>
+                Hubungi <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-rose-600">Putra Limas</span>
             </h1>
             <p class="text-slate-300 text-base max-w-xl mx-auto leading-relaxed">
                 Kami siap melayani kebutuhan transportasi pariwisata, material bangunan, dan proyek konstruksi Anda dengan profesionalisme tinggi.

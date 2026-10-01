@@ -38,7 +38,7 @@
                     : (\App\Models\Setting::get('img_unit_usaha_hero')
                         ? Storage::url(\App\Models\Setting::get('img_unit_usaha_hero'))
                         : 'https://images.unsplash.com/photo-1541888946425-d0fbb186a5b7?auto=format&fit=crop&q=80&w=1600') }}"
-                alt="Unit Usaha Limas Putra"
+                alt="Unit Usaha Putra Limas"
                 class="lp-hero-image w-full h-full object-cover opacity-60 scale-105"
             >
 

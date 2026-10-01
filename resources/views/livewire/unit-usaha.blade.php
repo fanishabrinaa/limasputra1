@@ -3,7 +3,7 @@
     <div class="lp-hero-glow relative bg-slate-950 text-white py-20 px-6 md:px-12 text-center overflow-hidden border-b border-slate-900"> 
         <div class="absolute inset-0 z-0">
             <img src="{{ \App\Models\Setting::get('img_halaman_hero') ? Storage::url(\App\Models\Setting::get('img_halaman_hero')) : (\App\Models\Setting::get('img_unit_usaha_hero') ? Storage::url(\App\Models\Setting::get('img_unit_usaha_hero')) : 'https://images.unsplash.com/photo-1541888946425-d0fbb186a5b7?auto=format&fit=crop&q=80&w=1600') }}"
-                alt="Unit Usaha Limas Putra"
+                alt="Unit Usaha Putra Limas"
                 class="lp-hero-image w-full h-full object-cover opacity-60 scale-105">
             <div class="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/70 to-slate-950"></div>
         </div>
@@ -19,7 +19,7 @@
                 {!! preg_replace(
                     '/\*\*(.*?)\*\*/',
                     '<span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-rose-600">$1</span>',
-                    e(\App\Models\Setting::get('unit_usaha_judul', 'Unit Usaha **Limas Putra**'))
+                    e(\App\Models\Setting::get('unit_usaha_judul', 'Unit Usaha **Putra Limas**'))
                 ) !!}
             </h1>
             <p class="lp-fade-up lp-delay-2 text-slate-300 text-base max-w-xl mx-auto leading-relaxed">

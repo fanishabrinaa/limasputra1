@@ -12,7 +12,7 @@ class KontenUnitUsaha extends Component
 
     public function mount()
     {
-        $this->unit_usaha_judul     = Setting::get('unit_usaha_judul', 'Unit Usaha **Limas Putra**');
+        $this->unit_usaha_judul     = Setting::get('unit_usaha_judul', 'Unit Usaha **Putra Limas**');
         $this->unit_usaha_deskripsi = Setting::get('unit_usaha_deskripsi', 'Temukan berbagai layanan unggulan kami melalui tiga bidang usaha utama yang mengutamakan kualitas, profesionalisme, dan kepercayaan pelanggan.');
     }
 

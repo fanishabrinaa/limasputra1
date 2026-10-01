@@ -83,7 +83,7 @@ $units = [
                 <div class="relative lp-scroll-left" style="--delay: 150ms;">
                     <div class="lp-motion-card rounded-2xl overflow-hidden shadow-2xl border border-slate-100">
                         <img src="{{ $img('img_tentang_sejarah', 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800') }}" 
-                            alt="Kantor Limas Putra" 
+                            alt="Kantor Putra Limas" 
                             class="w-full object-cover h-96 hover:scale-105 transition-transform duration-700">
                     </div>
                     <div class="absolute -bottom-6 -left-6 bg-rose-700 text-white p-6 rounded-2xl shadow-xl shadow-rose-950/30 text-center border-4 border-white">

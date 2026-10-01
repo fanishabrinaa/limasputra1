@@ -22,6 +22,36 @@
         ['label' => 'Kontak',       'route' => 'kontak',        'active' => ['kontak']],
     ];
     $footerMenu = array_slice($menu, 0, 4);
+
+    // ===== SEO =====
+    $pageTitle = (isset($title) ? $title . ' - ' : '') . $nama;
+    $pageDesc  = $metaDescription ?? $deskripsi;
+    $ogImage   = $logo ? url(Storage::url($logo)) : null;
+
+    // Data bisnis lokal untuk Google (schema.org)
+    $schema = array_filter([
+        '@context'    => 'https://schema.org',
+        '@type'       => 'LocalBusiness',
+        'name'        => $nama,
+        'url'         => url('/'),
+        'description' => $deskripsi,
+        'telephone'   => $nomor ? '+' . $nomor : null,
+        'email'       => $email,
+        'image'       => $ogImage,
+        'address'     => [
+            '@type'           => 'PostalAddress',
+            'streetAddress'   => 'Bendo, Sekuro, Kec. Mlonggo',
+            'addressLocality' => 'Jepara',
+            'addressRegion'   => 'Jawa Tengah',
+            'addressCountry'  => 'ID',
+        ],
+        'geo' => [
+            '@type'     => 'GeoCoordinates',
+            'latitude'  => -6.5268919,
+            'longitude' => 110.7173314,
+        ],
+        'sameAs' => array_values(array_filter([$instagram, $tiktok])),
+    ]);
 @endphp
 <!DOCTYPE html>
 <html lang="id">
@@ -30,8 +60,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ isset($title) ? $title . ' - ' : '' }}{{ $setting('nama_perusahaan', config('app.name')) }}</title>
-        <meta name="description" content="{{ $deskripsi }}">
+    <title>{{ $pageTitle }}</title>
+    <meta name="description" content="{{ $pageDesc }}">
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    {{-- Tampilan saat link dibagikan ke WhatsApp, Facebook, dll --}}
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{ $nama }}">
+    <meta property="og:title" content="{{ $pageTitle }}">
+    <meta property="og:description" content="{{ $pageDesc }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    @if ($ogImage)
+        <meta property="og:image" content="{{ $ogImage }}">
+    @endif
+    <meta name="twitter:card" content="summary_large_image">
+
     @if ($logo)
         <link rel="icon" type="image/png" href="{{ Storage::url($logo) }}">
     @endif
@@ -49,12 +92,14 @@
             body.menu-open #wa-float { display: none !important; }
         }
     </style>
+
+    <script type="application/ld+json">{!! json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
 </head>
 
 <body class="lp-site bg-slate-50 text-slate-800 font-sans antialiased selection:bg-rose-500 selection:text-white flex flex-col min-h-screen">
 
     {{-- ============================= NAVBAR ============================= --}}
-        <nav x-data="{ mobileOpen: false }"
+    <nav x-data="{ mobileOpen: false }"
          x-effect="document.body.style.overflow = mobileOpen ? 'hidden' : ''; document.body.classList.toggle('menu-open', mobileOpen)"
          @keydown.escape.window="mobileOpen = false"
          class="bg-gradient-to-b from-white to-slate-100 border-b border-slate-200 px-6 md:px-12 py-4 sticky top-0 z-50">
@@ -81,47 +126,47 @@
             {{-- Auth (desktop) --}}
             <div class="hidden md:flex items-center gap-4">
                 @auth
-    @if (auth()->user()->role === 'admin')
-        <a href="{{ route('dashboard') }}" class="text-sm font-medium text-rose-700 hover:underline">Dashboard Admin</a>
-    @else
-        <a href="{{ route('pemesanan.riwayat') }}" class="text-sm font-medium text-slate-600 hover:text-rose-700">Pesanan Saya</a>
-    @endif
+                    @if (auth()->user()->role === 'admin')
+                        <a href="{{ route('dashboard') }}" class="text-sm font-medium text-rose-700 hover:underline">Dashboard Admin</a>
+                    @else
+                        <a href="{{ route('pemesanan.riwayat') }}" class="text-sm font-medium text-slate-600 hover:text-rose-700">Pesanan Saya</a>
+                    @endif
 
-    {{-- @click.outside dipasang di wrapper, bukan di tombol --}}
-    <div class="relative" x-data="{ userMenuOpen: false }" @click.outside="userMenuOpen = false">
-        <button type="button" @click="userMenuOpen = !userMenuOpen" :aria-expanded="userMenuOpen"
-                class="flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-rose-700 transition">
-            <div class="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center text-rose-700 font-semibold text-xs">
-                {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
-            </div>
-            <span>{{ auth()->user()->name }}</span>
-            <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': userMenuOpen }"
-                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-        </button>
+                    {{-- @click.outside dipasang di wrapper, bukan di tombol --}}
+                    <div class="relative" x-data="{ userMenuOpen: false }" @click.outside="userMenuOpen = false">
+                        <button type="button" @click="userMenuOpen = !userMenuOpen" :aria-expanded="userMenuOpen"
+                                class="flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-rose-700 transition">
+                            <div class="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center text-rose-700 font-semibold text-xs">
+                                {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+                            </div>
+                            <span>{{ auth()->user()->name }}</span>
+                            <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': userMenuOpen }"
+                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
 
-        <div x-show="userMenuOpen" x-cloak x-transition
-             class="absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-lg border border-slate-100 py-1 z-50">
-            <a href="{{ route('profile') }}"
-               class="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-rose-700">
-                Profil Saya
-            </a>
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button type="submit"
-                        class="w-full text-left px-4 py-2 text-sm text-slate-500 hover:bg-rose-50 hover:text-rose-700">
-                    Logout
-                </button>
-            </form>
-        </div>
-    </div>
-@else
-    <a href="{{ route('login') }}"
-       class="bg-rose-700 hover:bg-rose-800 text-white text-sm font-semibold px-5 py-2 rounded-lg transition">
-        Login
-    </a>
-@endauth
+                        <div x-show="userMenuOpen" x-cloak x-transition
+                             class="absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-lg border border-slate-100 py-1 z-50">
+                            <a href="{{ route('profile') }}"
+                               class="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-rose-700">
+                                Profil Saya
+                            </a>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit"
+                                        class="w-full text-left px-4 py-2 text-sm text-slate-500 hover:bg-rose-50 hover:text-rose-700">
+                                    Logout
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                @else
+                    <a href="{{ route('login') }}"
+                       class="bg-rose-700 hover:bg-rose-800 text-white text-sm font-semibold px-5 py-2 rounded-lg transition">
+                        Login
+                    </a>
+                @endauth
             </div>
 
             {{-- Hamburger (mobile) --}}
@@ -208,7 +253,7 @@
         {{ $slot }}
     </main>
 
-        {{-- ============================= FOOTER ============================= --}}
+    {{-- ============================= FOOTER ============================= --}}
     <footer class="lp-site-footer">
 
         {{-- Baris atas: putih, hanya judul kolom (desktop) --}}
@@ -324,31 +369,37 @@
             </span>
         </a>
     @endif
-        @livewireScripts
+
+    @livewireScripts
+
+    {{-- ============================= AUTO-GESER CAROUSEL (mobile) ============================= --}}
     <script>
     (function () {
         if (window.__autoScrollInit) return;
         window.__autoScrollInit = true;
 
         const pausedUntil = new WeakMap();
+
+        // Geser dengan durasi yang bisa diatur (ms)
         function animateScroll(el, to, duration) {
-    const from = el.scrollLeft;
-    const start = performance.now();
-    el.style.scrollSnapType = 'none'; // matikan snap sementara supaya tidak melawan animasi
+            const from = el.scrollLeft;
+            const start = performance.now();
+            el.style.scrollSnapType = 'none'; // matikan snap sementara supaya tidak melawan animasi
 
-    function tick(now) {
-        const t = Math.min((now - start) / duration, 1);
-        const ease = 1 - Math.pow(1 - t, 3); // easeOutCubic
-        el.scrollLeft = from + (to - from) * ease;
-        if (t < 1) {
+            function tick(now) {
+                const t = Math.min((now - start) / duration, 1);
+                const ease = 1 - Math.pow(1 - t, 3); // easeOutCubic
+                el.scrollLeft = from + (to - from) * ease;
+                if (t < 1) {
+                    requestAnimationFrame(tick);
+                } else {
+                    el.style.scrollSnapType = ''; // snap aktif lagi
+                }
+            }
             requestAnimationFrame(tick);
-        } else {
-            el.style.scrollSnapType = ''; // snap aktif lagi
         }
-    }
-    requestAnimationFrame(tick);
-}
 
+        // Jeda 3 detik setelah carousel disentuh / digeser manual
         const pause = (e) => {
             const s = e.target.closest && e.target.closest('[data-autoscroll]');
             if (s) pausedUntil.set(s, Date.now() + 3000);
@@ -374,9 +425,9 @@
                 const step = cards[1].offsetLeft - cards[0].offsetLeft;
                 const next = s.scrollLeft >= maxScroll - 5 ? 0 : Math.min(s.scrollLeft + step, maxScroll);
 
-                s.scrollTo({ left: next, behavior: 'smooth' });
+                animateScroll(s, next, 400);
             });
-        }, 2000);
+        }, 2000); // jeda antar geseran (ms)
     })();
     </script>
 </body>

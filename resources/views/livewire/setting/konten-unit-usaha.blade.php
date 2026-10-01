@@ -13,7 +13,7 @@
             <div>
                 <label class="block text-sm font-semibold text-slate-700 mb-1">Judul Hero</label>
                 <input type="text" wire:model="unit_usaha_judul" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm">
-                <p class="text-xs text-slate-400 mt-1">Kasih tanda ** di sekitar kata yang mau dikasih warna gradasi. Contoh: Unit Usaha **Limas Putra**</p>
+                <p class="text-xs text-slate-400 mt-1">Kasih tanda ** di sekitar kata yang mau dikasih warna gradasi. Contoh: Unit Usaha **Putra Limas**</p>
                 @error('unit_usaha_judul') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
             </div>
             <div>

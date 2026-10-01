@@ -30,7 +30,7 @@ class KontenBeranda extends Component
     public function mount()
     {
         $this->unitbisnis_judul   = Setting::get('beranda_unitbisnis_judul', 'Unit Bisnis Strategis Kami');
-        $this->unitbisnis_paragraf = Setting::get('beranda_unitbisnis_paragraf', 'Limas Putra mengintegrasikan tiga pilar bisnis utama untuk mendukung kebutuhan mobilitas dan pembangunan infrastruktur di Indonesia.');
+        $this->unitbisnis_paragraf = Setting::get('beranda_unitbisnis_paragraf', 'Putra Limas mengintegrasikan tiga pilar bisnis utama untuk mendukung kebutuhan mobilitas dan pembangunan infrastruktur di Indonesia.');
 
         $this->desc_bus         = Setting::get('beranda_desc_bus', 'Layanan transportasi eksekutif dengan armada modern untuk perjalanan wisata, bisnis, maupun keperluan grup.');
         $this->desc_bangunan    = Setting::get('beranda_desc_bangunan', 'Pusat retail bahan bangunan terlengkap yang menyediakan material berkualitas dengan harga kompetitif.');

@@ -10,7 +10,7 @@
                     PANEL KONTROL UTAMA
                 </span>
                 <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight mb-2">
-                    Ringkasan Performa <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-rose-600">{{ \App\Models\Setting::get('nama_perusahaan', 'Limas Putra') }}</span>
+                    Ringkasan Performa <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-rose-600">{{ \App\Models\Setting::get('nama_perusahaan', 'Putra Limas') }}</span>
                 </h1>
                 <p class="text-slate-400 text-sm max-w-xl leading-relaxed">
                     Pantau statistik pemesanan harian, statistik inventaris unit bisnis, dan aktivitas pesan terbaru dalam satu layar.

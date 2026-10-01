@@ -16,10 +16,10 @@
             <select wire:model.live="filterStatus" 
                     class="bg-white border border-slate-300 text-slate-800 text-xs font-bold rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-700 transition cursor-pointer">
                 <option value="">Semua Status</option>
-                <option value="Menunggu">⏳ Menunggu</option>
-                <option value="Disetujui">✅ Disetujui</option>
-                <option value="Selesai">🎉 Selesai</option>
-                <option value="Ditolak">❌ Ditolak</option>
+                <option value="Menunggu">Menunggu</option>
+                <option value="Disetujui">Disetujui</option>
+                <option value="Selesai">Selesai</option>
+                <option value="Ditolak"> Ditolak</option>
             </select>
         </div>
     </div>
@@ -281,9 +281,7 @@
                                              alt="{{ $item->armada->nama_bus }}"
                                              class="w-full h-full object-cover">
                                     @else
-                                        <div class="w-full h-full flex items-center justify-center text-5xl">
-                                            🚌
-                                        </div>
+
                                     @endif
 
                                     <button
@@ -413,37 +411,47 @@
         </div>
     </div>
 
-    <!-- MODAL PENOLAKAN PEMESANAN -->
+       <!-- MODAL PENOLAKAN PEMESANAN -->
     @if ($showModalTolak)
-        <div class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in">
-            <div class="bg-white rounded-3xl p-6 md:p-8 max-w-md w-full shadow-2xl border border-slate-100 relative">
-                <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-4">
-                    <h3 class="font-extrabold text-lg text-slate-900">Tolak Pemesanan</h3>
-                    <button wire:click="$set('showModalTolak', false)" class="text-slate-400 hover:text-slate-600 text-sm">✕</button>
-                </div>
-                
-                <p class="text-xs text-slate-500 mb-4">Tuliskan alasan penolakan untuk diinformasikan kepada pemesan.</p>
+        <div x-data x-effect="document.body.style.overflow = 'hidden'" x-on:remove="document.body.style.overflow = ''">
+            <template x-teleport="body">
+                <div class="fixed inset-0 z-[100] flex items-center justify-center p-4">
 
-                <div class="mb-5">
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Alasan Penolakan</label>
-                    <textarea wire:model="alasanPenolakan" 
-                              rows="3"
-                              class="w-full border border-slate-300 rounded-xl p-3 text-xs focus:ring-2 focus:ring-rose-500/20 focus:border-rose-700 outline-none transition"
-                              placeholder="Contoh: Armada bus pada tanggal tersebut sudah penuh booked."></textarea>
-                    @error('alasanPenolakan') <span class="text-rose-600 text-xs mt-1 block font-medium">{{ $message }}</span> @enderror
-                </div>
+                    {{-- Latar gelap --}}
+                    <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-sm"
+                         wire:click="$set('showModalTolak', false)"></div>
 
-                <div class="flex gap-3">
-                    <button wire:click="konfirmasiTolak" 
-                            class="bg-rose-700 hover:bg-rose-800 text-white px-5 py-3 rounded-xl flex-1 text-xs font-bold shadow-md transition">
-                        Konfirmasi Penolakan
-                    </button>
-                    <button wire:click="$set('showModalTolak', false)" 
-                            class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-5 py-3 rounded-xl flex-1 text-xs font-bold transition">
-                        Batal
-                    </button>
+                    {{-- Kotak modal --}}
+                    <div class="relative bg-white rounded-3xl p-6 md:p-8 max-w-md w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-100">
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-4">
+                            <h3 class="font-extrabold text-lg text-slate-900">Tolak Pemesanan</h3>
+                            <button wire:click="$set('showModalTolak', false)" class="text-slate-400 hover:text-slate-600 text-sm">✕</button>
+                        </div>
+
+                        <p class="text-xs text-slate-500 mb-4">Tuliskan alasan penolakan untuk diinformasikan kepada pemesan.</p>
+
+                        <div class="mb-5">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Alasan Penolakan</label>
+                            <textarea wire:model="alasanPenolakan"
+                                      rows="3"
+                                      class="w-full border border-slate-300 rounded-xl p-3 text-xs focus:ring-2 focus:ring-rose-500/20 focus:border-rose-700 outline-none transition"
+                                      placeholder="Contoh: Armada bus pada tanggal tersebut sudah penuh booked."></textarea>
+                            @error('alasanPenolakan') <span class="text-rose-600 text-xs mt-1 block font-medium">{{ $message }}</span> @enderror
+                        </div>
+
+                        <div class="flex gap-3">
+                            <button wire:click="konfirmasiTolak"
+                                    class="bg-rose-700 hover:bg-rose-800 text-white px-5 py-3 rounded-xl flex-1 text-xs font-bold shadow-md transition">
+                                Konfirmasi Penolakan
+                            </button>
+                            <button wire:click="$set('showModalTolak', false)"
+                                    class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-5 py-3 rounded-xl flex-1 text-xs font-bold transition">
+                                Batal
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </template>
         </div>
     @endif
 </div>

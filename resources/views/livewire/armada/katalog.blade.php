@@ -7,7 +7,7 @@
              class="absolute inset-0 w-full h-full object-cover opacity-60">
         <div class="relative z-10 px-6 md:px-12 py-16 max-w-2xl">
             <span class="inline-block bg-rose-700 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">
-                LIMAS PUTRA TOURISM
+                PUTRA LIMAS TOURISM
             </span>
             <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
                 Perjalanan Mewah, Keamanan Utama.
@@ -29,7 +29,7 @@
             {{ \App\Models\Setting::get('katalog_judul', 'Layanan Sewa Bus Pariwisata Profesional') }}
         </h2>
         <p class="text-slate-600 mb-6">
-            {{ \App\Models\Setting::get('katalog_deskripsi', 'Limas Putra telah berpengalaman lebih dari satu dekade dalam menyediakan jasa transportasi pariwisata. Seluruh armada kami dirawat secara berkala untuk memastikan performa mesin yang prima dan interior yang senantiasa bersih.') }}
+            {{ \App\Models\Setting::get('katalog_deskripsi', 'Putra Limas telah berpengalaman lebih dari satu dekade dalam menyediakan jasa transportasi pariwisata. Seluruh armada kami dirawat secara berkala untuk memastikan performa mesin yang prima dan interior yang senantiasa bersih.') }}
         </p>
         <div class="grid grid-cols-2 gap-3 text-sm text-slate-700">
             <div class="flex items-center gap-2">Supir Berpengalaman</div>

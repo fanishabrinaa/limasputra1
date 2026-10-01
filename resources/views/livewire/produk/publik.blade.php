@@ -27,7 +27,7 @@
                 </h1>
 
                 <p class="text-slate-400 text-sm md:text-base mb-8 leading-relaxed max-w-lg">
-                    Limas Putra menyediakan stok terlengkap untuk segala kebutuhan konstruksi Anda. Dari semen hingga baja ringan, kualitas premium untuk bangunan kokoh dan tahan lama.
+                    Putra Limas menyediakan stok terlengkap untuk segala kebutuhan konstruksi Anda. Dari semen hingga baja ringan, kualitas premium untuk bangunan kokoh dan tahan lama.
                 </p>
 
                 <div class="flex flex-wrap gap-3">

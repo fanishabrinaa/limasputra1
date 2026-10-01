@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - {{ \App\Models\Setting::get('nama_perusahaan', 'Limas Putra') }}</title>
+    <title>Admin Panel - {{ \App\Models\Setting::get('nama_perusahaan', 'Putra Limas') }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
@@ -24,7 +24,7 @@
                     @endif
                     <div>
                         <span class="font-extrabold text-base text-white tracking-tight block leading-none">
-                            {{ \App\Models\Setting::get('nama_perusahaan', 'Limas Putra') }}
+                            {{ \App\Models\Setting::get('nama_perusahaan', 'Putra Limas') }}
                         </span>
                         <span class="text-[10px] font-semibold text-rose-500 uppercase tracking-widest block mt-1">Admin Panel</span>
                     </div>
@@ -145,7 +145,7 @@
             <div class="md:hidden fixed top-0 left-0 right-0 bg-slate-950 text-white px-4 py-3 flex justify-between items-center z-40 border-b border-slate-900 shadow-md">
                 <span class="font-bold text-rose-500 text-sm flex items-center gap-2">
                     <span class="w-2.5 h-2.5 rounded-full bg-rose-600"></span>
-                    {{ \App\Models\Setting::get('nama_perusahaan', 'Limas Putra') }}
+                    {{ \App\Models\Setting::get('nama_perusahaan', 'Putra Limas') }}
                 </span>
                 <button @click="mobileNavOpen = true" class="text-white">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -174,7 +174,7 @@
 
                 <div class="px-6 py-6 border-b border-slate-900 flex items-center justify-between">
                     <span class="font-extrabold text-base text-white">
-                        {{ \App\Models\Setting::get('nama_perusahaan', 'Limas Putra') }}
+                        {{ \App\Models\Setting::get('nama_perusahaan', 'Putra Limas') }}
                     </span>
                     <button @click="mobileNavOpen = false" class="text-slate-400 hover:text-white">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

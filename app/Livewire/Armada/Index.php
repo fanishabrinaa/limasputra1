@@ -39,7 +39,7 @@ class Index extends Component
     public function mount()
     {
         $this->katalog_judul     = Setting::get('katalog_judul', 'Layanan Sewa Bus Pariwisata Profesional');
-        $this->katalog_deskripsi = Setting::get('katalog_deskripsi', 'Limas Putra telah berpengalaman lebih dari satu dekade dalam menyediakan jasa transportasi pariwisata.');
+        $this->katalog_deskripsi = Setting::get('katalog_deskripsi', 'Putra Limas telah berpengalaman lebih dari satu dekade dalam menyediakan jasa transportasi pariwisata.');
     }
 
     protected function rules()

@@ -6,13 +6,15 @@ use App\Models\Armada;
 use App\Models\ProdukBangunan;
 use App\Models\Setting;
 use Livewire\Component;
+use Livewire\Attributes\Title;
 
+#[Title('Sewa Bus Pariwisata Jepara, Toko Bangunan & Jasa Konstruksi')]
 class Beranda extends Component
 {
     public function render()
     {
         return view('livewire.beranda', [
-            'nama_perusahaan' => Setting::get('nama_perusahaan', 'Limas Putra'),
+            'nama_perusahaan' => Setting::get('nama_perusahaan', 'Putra Limas'),
             'deskripsi'       => Setting::get('deskripsi', 'Menghadirkan solusi terpadu dalam sektor konstruksi, retail material bangunan, dan transportasi pariwisata dengan standar profesionalisme tertinggi.'),
             'jumlahArmada'    => Armada::count(),
             'jumlahProduk'    => ProdukBangunan::count(),

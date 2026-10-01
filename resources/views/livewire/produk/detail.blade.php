@@ -215,7 +215,7 @@
             </h4>
 
             <p class="text-sm text-slate-600 mb-3">
-                {{ \App\Models\Setting::get('alamat', 'Depo Limas Putra') }}
+                {{ \App\Models\Setting::get('alamat', 'Depo Putra Limas') }}
             </p>
         </div>
 

@@ -13,7 +13,7 @@ class KontenGaleri extends Component
     public function mount()
     {
         $this->galeri_judul     = Setting::get('galeri_judul', 'Galeri Dokumentasi');
-        $this->galeri_deskripsi = Setting::get('galeri_deskripsi', 'Jelajahi kumpulan foto kegiatan, armada bus pariwisata, material toko bangunan, dan pengerjaan proyek konstruksi Limas Putra.');
+        $this->galeri_deskripsi = Setting::get('galeri_deskripsi', 'Jelajahi kumpulan foto kegiatan, armada bus pariwisata, material toko bangunan, dan pengerjaan proyek konstruksi Putra Limas.');
     }
 
     public function simpan()
