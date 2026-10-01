@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - {{ \App\Models\Setting::get('nama_perusahaan', 'Putra Limas') }}</title>
+    @php
+    $logoLogin = \App\Models\Setting::get('logo');
+@endphp
+
+@if ($logoLogin)
+    <link rel="icon" type="image/png" href="{{ Storage::url($logoLogin) }}">
+@endif
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
