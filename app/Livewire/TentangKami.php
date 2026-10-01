@@ -4,7 +4,9 @@ namespace App\Livewire;
 
 use App\Models\Setting;
 use Livewire\Component;
+use Livewire\Attributes\Title;
 
+#[Title('Tentang Kami - Putra Limas')]
 class TentangKami extends Component
 {
     public function render()
