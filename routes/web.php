@@ -100,6 +100,19 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/setting/gambar', SettingGambar::class)->name('setting.gambar');
     Route::get('/setting/konten-konstruksi', KontenKonstruksi::class)->name('setting.konten-konstruksi');
     Route::get('/setting/konten-beranda', KontenBeranda::class)->name('setting.konten-beranda');
+
+    Route::get('/sitemap.xml', function () {
+    $names = ['beranda', 'unit-usaha', 'armada.katalog', 'produk.publik',
+              'konstruksi', 'galeri.publik', 'about', 'kontak'];
+
+    $xml  = '<?xml version="1.0" encoding="UTF-8"?>';
+    $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+    foreach ($names as $name) {
+        $xml .= '<url><loc>' . route($name) . '</loc></url>';
+    }
+    $xml .= '</urlset>';
+
+    return response($xml, 200, ['Content-Type' => 'application/xml']);
 });
 
 // require __DIR__.'/settings.php';
