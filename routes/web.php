@@ -52,41 +52,59 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/galeri', Galeri::class)->name('galeri');
 
     Route::get('/pemesanan', Pemesanan::class)->name('pemesanan');
-    });
-    
-    Route::middleware(['auth', 'admin'])->group(function () {
-        Route::get('/setting/konten-unit-usaha', \App\Livewire\Setting\KontenUnitUsaha::class)->name('setting.konten-unit-usaha');
-        
-    });
-    Route::get('/armada-katalog', ArmadaKatalog::class)->name('armada.katalog');
-    Route::middleware(['auth', 'admin'])->group(function () {
-        // ... route dashboard, armada, fasilitas kamu yang lain
-        Route::get('/pemesanan', PemesananIndex::class)->name('pemesanan.index');
-    });
-    //wajib login
-    Route::middleware(['auth'])->group(function () {
-        Route::get('/pemesanan/{armadaId}', PemesananCreate::class)->name('pemesanan.create');
-        Route::get('/pesanan-saya', PemesananRiwayat::class)->name('pemesanan.riwayat');
-        Route::get('/pemesanan/{id}/sukses', PemesananSukses::class)->name('pemesanan.sukses');
-        Route::get('/profile', ProfileIndex::class)->name('profile');
-    });
-    // Publik
-    Route::get('/', Beranda::class)->name('beranda');
-    Route::get('/tentang-kami', TentangKami::class)->name('about');
-    Route::get('/konstruksi', Konstruksi::class)->name('konstruksi');
-    Route::get('/unit-usaha', UnitUsaha::class)->name('unit-usaha');
-    Route::get('/kontak', Kontak::class)->name('kontak');
+});
 
-    Route::get('/armada-katalog', ArmadaKatalog::class)->name('armada.katalog');
-    Route::get('/armada/{id}', ArmadaDetail::class)->name('armada.detail');
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/setting/konten-unit-usaha', \App\Livewire\Setting\KontenUnitUsaha::class)->name('setting.konten-unit-usaha');
+});
 
-    Route::get('/produk-publik', ProdukPublik::class)->name('produk.publik');
-    Route::get('/produk/{id}', ProdukDetail::class)->name('produk.detail');
+Route::get('/armada-katalog', ArmadaKatalog::class)->name('armada.katalog');
 
-    Route::get('/galeri-publik', GaleriPublik::class)->name('galeri.publik');
+Route::middleware(['auth', 'admin'])->group(function () {
+    // ... route dashboard, armada, fasilitas kamu yang lain
+    Route::get('/pemesanan', PemesananIndex::class)->name('pemesanan.index');
+});
 
-    // Admin    
-    Route::middleware(['auth', 'admin'])->group(function () {
+// Wajib login
+Route::middleware(['auth'])->group(function () {
+    Route::get('/pemesanan/{armadaId}', PemesananCreate::class)->name('pemesanan.create');
+    Route::get('/pesanan-saya', PemesananRiwayat::class)->name('pemesanan.riwayat');
+    Route::get('/pemesanan/{id}/sukses', PemesananSukses::class)->name('pemesanan.sukses');
+    Route::get('/profile', ProfileIndex::class)->name('profile');
+});
+
+// Publik
+Route::get('/', Beranda::class)->name('beranda');
+Route::get('/tentang-kami', TentangKami::class)->name('about');
+Route::get('/konstruksi', Konstruksi::class)->name('konstruksi');
+Route::get('/unit-usaha', UnitUsaha::class)->name('unit-usaha');
+Route::get('/kontak', Kontak::class)->name('kontak');
+
+Route::get('/armada-katalog', ArmadaKatalog::class)->name('armada.katalog');
+Route::get('/armada/{id}', ArmadaDetail::class)->name('armada.detail');
+
+Route::get('/produk-publik', ProdukPublik::class)->name('produk.publik');
+Route::get('/produk/{id}', ProdukDetail::class)->name('produk.detail');
+
+Route::get('/galeri-publik', GaleriPublik::class)->name('galeri.publik');
+
+// Sitemap untuk Google (publik, di luar grup admin)
+Route::get('/sitemap.xml', function () {
+    $names = ['beranda', 'unit-usaha', 'armada.katalog', 'produk.publik',
+              'konstruksi', 'galeri.publik', 'about', 'kontak'];
+
+    $xml  = '<?xml version="1.0" encoding="UTF-8"?>';
+    $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+    foreach ($names as $name) {
+        $xml .= '<url><loc>' . route($name) . '</loc></url>';
+    }
+    $xml .= '</urlset>';
+
+    return response($xml, 200, ['Content-Type' => 'application/xml']);
+});
+
+// Admin
+Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/armada', Armada::class)->name('armada');
     Route::get('/fasilitas', Fasilitas::class)->name('fasilitas');
@@ -100,19 +118,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/setting/gambar', SettingGambar::class)->name('setting.gambar');
     Route::get('/setting/konten-konstruksi', KontenKonstruksi::class)->name('setting.konten-konstruksi');
     Route::get('/setting/konten-beranda', KontenBeranda::class)->name('setting.konten-beranda');
-
-    Route::get('/sitemap.xml', function () {
-    $names = ['beranda', 'unit-usaha', 'armada.katalog', 'produk.publik',
-              'konstruksi', 'galeri.publik', 'about', 'kontak'];
-
-    $xml  = '<?xml version="1.0" encoding="UTF-8"?>';
-    $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
-    foreach ($names as $name) {
-        $xml .= '<url><loc>' . route($name) . '</loc></url>';
-    }
-    $xml .= '</urlset>';
-
-    return response($xml, 200, ['Content-Type' => 'application/xml']);
 });
 
 // require __DIR__.'/settings.php';
