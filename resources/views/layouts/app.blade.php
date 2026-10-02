@@ -26,7 +26,7 @@
     // ===== SEO =====
     $pageTitle = (isset($title) ? $title . ' - ' : '') . $nama;
     $pageDesc  = $metaDescription ?? $deskripsi;
-    $ogImage   = $logo ? url(Storage::url($logo)) : null;
+    $ogImage   = $ogImage ?? ($logo ? url(Storage::url($logo)) : null);
 
     // Data bisnis lokal untuk Google (schema.org)
     $schema = array_filter([

@@ -1,4 +1,4 @@
-<div class="py-6 px-6 md:px-12 max-w-7xl mx-auto space-y-8 bg-slate-50 min-h-screen animate-fade-in">
+<div class="py-6 px-6 md:px-12 max-w-7xl mx-auto space-y-8 animate-fade-in">
 
     {{-- 1️⃣ BREADCRUMB & HEADER --}}
     <section class="animate-fade-in-up">
