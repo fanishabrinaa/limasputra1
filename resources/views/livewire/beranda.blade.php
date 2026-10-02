@@ -1,35 +1,34 @@
 <div>
     <!-- HERO SECTION -->
-    <div class="lp-hero-glow relative min-h-[560px] bg-slate-950 flex items-center">
+    <div class="lp-hero-glow relative min-h-[560px] bg-slate-950 flex items-center justify-center">
         <!-- Background Image & Gradient Overlay -->
         <div class="absolute inset-0 overflow-hidden">
             <img src="{{ \App\Models\Setting::get('img_beranda_hero') ? Storage::url(\App\Models\Setting::get('img_beranda_hero')) : 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1400' }}"
-                class="w-full h-full object-cover opacity-50 scale-105 transition-transform duration-1000">
-            <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent"></div>
+                alt="Kantor Putra Limas"
+                class="w-full h-full object-cover opacity-90 brightness-110 scale-105 transition-transform duration-1000">
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/55 to-slate-950/70"></div>
         </div>
 
-            <div class="relative z-10 px-6 md:px-12 pt-10 pb-28 md:pb-32 max-w-3xl lp-hero-content">
+       <div class="relative z-10 px-6 md:px-12 pt-10 pb-28 md:pb-32 max-w-4xl w-full mx-auto text-center lp-hero-content">
             <span class="lp-fade-up lp-scroll-rotate inline-flex items-center gap-2 bg-rose-500/10 border border-rose-500/30 text-rose-400 text-xs font-semibold px-3.5 py-1.5 rounded-full mb-6 backdrop-blur-md">
                 INSTITUTIONAL TRUST
             </span>
-            <h1 class="lp-fade-up lp-delay-1 text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight tracking-tight">
-                Membangun Masa Depan Bersama <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-rose-600">
-                    {{ $nama_perusahaan }}</span>
-            </h1>
-            <p class="lp-fade-up lp-delay-2 text-slate-300 text-lg mb-8 leading-relaxed max-w-xl">{{ $deskripsi }}</p>
-            <div class="flex flex-wrap gap-4">
-                <a href="{{ route('about') }}"  class="lp-fade-up lp-delay-3 lp-motion-button bg-rose-700 hover:bg-rose-600 text-white font-semibold px-7 py-3.5 rounded-xl shadow-lg shadow-rose-900/30 transition-all duration-300 hover:scale-[1.02]">
-                    Pelajari Lebih Lanjut
-                </a>
-                <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', \App\Models\Setting::get('telepon', '')) }}" target="_blank" class="lp-fade-up lp-delay-3 lp-motion-button bg-white/10 border border-white/30 hover:bg-white/20 text-white font-semibold px-7 py-3.5 rounded-xl backdrop-blur-sm transition-all duration-300 hover:border-slate-600">
-                    Hubungi Kami
-                </a>
-            </div>
+<h1 class="lp-fade-up lp-delay-1 text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight tracking-tight drop-shadow-md text-balance">    Membangun Masa Depan Bersama
+    <span class="block mt-1 text-rose-500 [text-shadow:0_0_20px_rgba(244,63,94,0.85)] animate-pulse [animation-duration:2.5s]">{{ $nama_perusahaan }}</span>
+</h1>
+<p class="lp-fade-up lp-delay-2 text-white/90 text-base md:text-lg mb-8 leading-relaxed max-w-2xl mx-auto text-balance drop-shadow">{{ $deskripsi }}</p>
+<div class="grid grid-cols-2 gap-3 md:flex md:justify-center md:gap-4 max-w-md mx-auto">
+    <a href="{{ route('about') }}" class="lp-fade-up lp-delay-3 lp-motion-button flex items-center justify-center text-center text-[13px] sm:text-base leading-tight px-3 py-3.5 md:w-56 bg-rose-700 hover:bg-rose-600 border border-transparent text-white font-semibold rounded-xl shadow-lg shadow-rose-900/30 transition-all duration-300 hover:scale-[1.02]">
+        Pelajari Lebih Lanjut
+    </a>
+    <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', \App\Models\Setting::get('telepon', '')) }}" target="_blank" rel="noopener noreferrer" class="lp-fade-up lp-delay-3 lp-motion-button flex items-center justify-center text-center text-[13px] sm:text-base leading-tight px-3 py-3.5 md:w-56 bg-white/10 border border-white/30 hover:bg-white/20 text-white font-semibold rounded-xl backdrop-blur-sm transition-all duration-300 hover:border-slate-600">
+        Hubungi Kami
+    </a>
+</div>
         </div>
     </div>
      <!-- FLOATING STAT BAR -->
-<div class="relative z-20 -mt-24 px-6 md:px-12 lp-stat-bar">
-    <div class="lp-scroll-zoom bg-white rounded-2xl shadow-xl shadow-slate-950/20 border border-slate-100 grid grid-cols-2 md:grid-cols-4 overflow-hidden divide-x divide-slate-100">
+<div class="relative z-20 -mt-12 md:-mt-24 px-6 md:px-12 lp-stat-bar">    <div class="lp-scroll-zoom bg-white rounded-2xl shadow-xl shadow-slate-950/20 border border-slate-100 grid grid-cols-2 md:grid-cols-4 overflow-hidden divide-x divide-slate-100">
         <div class="lp-stat-item p-4 md:p-6 text-center hover:bg-slate-50/50 transition-colors">
             <p class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-1">{{ $statTahunPengalaman }}</p>
             <p class="text-[11px] md:text-xs font-medium text-slate-500 uppercase tracking-wider">Tahun Pengalaman</p>
@@ -53,10 +52,10 @@
     <h2 class="lp-scroll text-3xl font-bold text-slate-900 mb-2">Mengapa Memilih Kami?</h2>
     <div class="lp-scroll lp-pulse-line w-16 h-1 bg-rose-600 mx-auto mb-12 rounded-full"></div>
 
-<div data-autoscroll class="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 md:grid md:grid-cols-4 md:gap-8 md:overflow-visible text-left max-w-7xl mx-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+<div data-autoscroll class="flex gap-6 overflow-x-auto snap-x snap-mandatory pt-2 pb-6 md:grid md:grid-cols-4 md:gap-8 md:overflow-visible text-left max-w-7xl mx-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
     @foreach ($mengapaKami as $index => $item)
         <div
-            class="lp-why-card lp-scroll-zoom lp-motion-card snap-start snap-always bg-white border border-slate-200/80 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-rose-200 transition-all duration-300 group"
+            class="lp-why-card lp-scroll-zoom lp-motion-card snap-start snap-always bg-white border border-slate-200/80 rounded-2xl shadow-sm hover:border-rose-200 transition-all duration-300 group"
             style="--delay: {{ $index * 120 }}ms;"
         >
             <h3 class="font-bold text-slate-900 text-lg mb-2">{{ $item['title'] }}</h3>

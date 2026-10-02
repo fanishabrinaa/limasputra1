@@ -10,11 +10,12 @@
 
         @if ($hero)
             <img src="{{ Storage::url($hero) }}"
-                class="lp-hero-image w-full h-full object-cover opacity-60 scale-105 transition-transform duration-700">
+                alt=""
+                class="lp-hero-image w-full h-full object-cover opacity-90 brightness-110 scale-105 transition-transform duration-700">
         @endif
 
-        <div class="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/70 to-slate-950"></div>
-    </div>   
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-950/50 to-slate-950"></div>
+    </div>  
     
     <!-- Ambient Glow -->
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[250px] bg-rose-600/10 blur-[100px] rounded-full pointer-events-none"></div>

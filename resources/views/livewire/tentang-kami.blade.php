@@ -45,7 +45,7 @@ $units = [
 
         @if ($hero)
             <img src="{{ Storage::url($hero) }}"
-                 class="lp-hero-image w-full h-full object-cover opacity-60 scale-105 transition-transform duration-1000">
+                 class="lp-hero-image w-full h-full object-cover opacity-90 brightness-110 scale-105 transition-transform duration-1000">
         @endif
 
         <div class="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/70 to-slate-950"></div>

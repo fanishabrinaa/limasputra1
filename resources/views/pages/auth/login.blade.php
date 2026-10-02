@@ -84,7 +84,11 @@
                             href="{{ route('beranda') }}"
                             class="inline-flex items-center gap-2 text-lg font-black text-white tracking-tight hover:opacity-90 transition"
                         >
-                            <span class="w-2.5 h-2.5 rounded-full bg-white"></span>
+                            @if ($logoLogin)
+                                <img src="{{ Storage::url($logoLogin) }}" alt="Logo" class="h-8 w-auto object-contain">
+                            @else
+                                <span class="w-2.5 h-2.5 rounded-full bg-white"></span>
+                            @endif
 
                             {{ \App\Models\Setting::get('nama_perusahaan', 'Putra Limas') }}
                         </a>

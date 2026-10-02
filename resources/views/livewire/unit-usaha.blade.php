@@ -2,11 +2,11 @@
     <!-- HEADER SECTION -->
     <div class="lp-hero-glow relative bg-slate-950 text-white py-20 px-6 md:px-12 text-center overflow-hidden border-b border-slate-900"> 
         <div class="absolute inset-0 z-0">
-            <img src="{{ \App\Models\Setting::get('img_halaman_hero') ? Storage::url(\App\Models\Setting::get('img_halaman_hero')) : (\App\Models\Setting::get('img_unit_usaha_hero') ? Storage::url(\App\Models\Setting::get('img_unit_usaha_hero')) : 'https://images.unsplash.com/photo-1541888946425-d0fbb186a5b7?auto=format&fit=crop&q=80&w=1600') }}"
-                alt="Unit Usaha Putra Limas"
-                class="lp-hero-image w-full h-full object-cover opacity-60 scale-105">
-            <div class="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/70 to-slate-950"></div>
-        </div>
+    <img src="{{ \App\Models\Setting::get('img_halaman_hero') ? Storage::url(\App\Models\Setting::get('img_halaman_hero')) : (\App\Models\Setting::get('img_unit_usaha_hero') ? Storage::url(\App\Models\Setting::get('img_unit_usaha_hero')) : 'https://images.unsplash.com/photo-1541888946425-d0fbb186a5b7?auto=format&fit=crop&q=80&w=1600') }}"
+        alt="Unit Usaha Putra Limas"
+        class="lp-hero-image w-full h-full object-cover opacity-90 brightness-110 scale-105">
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-950/50 to-slate-950"></div>
+</div>
 
         <!-- Glow Effect Ambient -->
        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[250px] bg-rose-600/10 blur-[100px] rounded-full pointer-events-none"></div>

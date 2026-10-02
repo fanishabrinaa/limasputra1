@@ -47,7 +47,11 @@
                     href="{{ route('beranda') }}"
                     class="relative z-10 inline-flex items-center gap-2 text-xl font-black text-white tracking-tight hover:opacity-90 transition w-fit p-10"
                 >
-                    <span class="w-3 h-3 rounded-full bg-white"></span>
+                    @if ($logoLogin)
+                        <img src="{{ Storage::url($logoLogin) }}" alt="Logo" class="h-10 w-auto object-contain">
+                    @else
+                        <span class="w-3 h-3 rounded-full bg-white"></span>
+                    @endif
                     {{ \App\Models\Setting::get('nama_perusahaan', 'Putra Limas') }}
                 </a>
 
@@ -88,8 +92,12 @@
                             href="{{ route('beranda') }}"
                             class="inline-flex items-center gap-2 text-lg font-black text-white tracking-tight hover:opacity-90 transition"
                         >
+                        @if ($logoLogin)
+                            <img src="{{ Storage::url($logoLogin) }}" alt="Logo" class="h-8 w-auto object-contain">
+                        @else
                             <span class="w-2.5 h-2.5 rounded-full bg-white"></span>
-                            {{ \App\Models\Setting::get('nama_perusahaan', 'Putra Limas') }}
+                        @endif
+                        {{ \App\Models\Setting::get('nama_perusahaan', 'Putra Limas') }}
                         </a>
 
                         <p class="text-slate-200/80 text-xs font-medium mt-3">

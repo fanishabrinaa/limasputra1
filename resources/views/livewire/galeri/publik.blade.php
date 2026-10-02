@@ -39,10 +39,10 @@
                         ? Storage::url(\App\Models\Setting::get('img_unit_usaha_hero'))
                         : 'https://images.unsplash.com/photo-1541888946425-d0fbb186a5b7?auto=format&fit=crop&q=80&w=1600') }}"
                 alt="Unit Usaha Putra Limas"
-                class="lp-hero-image w-full h-full object-cover opacity-60 scale-105"
+                class="lp-hero-image w-full h-full object-cover opacity-90 brightness-110 scale-105"
             >
 
-            <div class="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/70 to-slate-950"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-950/50 to-slate-950"></div>
         </div>
 
         <div class="relative z-10 max-w-3xl mx-auto">

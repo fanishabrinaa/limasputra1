@@ -5,8 +5,9 @@
 <div class="absolute inset-0 z-0 overflow-hidden">
     @if ($gambarHero)
         <img src="{{ Storage::url($gambarHero) }}"
-             class="w-full h-full object-cover">
+             alt=""
+             class="w-full h-full object-cover brightness-110">
     @endif
 
-    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/70 to-slate-950"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/20 via-slate-950/40 to-slate-950/90"></div>
 </div>
