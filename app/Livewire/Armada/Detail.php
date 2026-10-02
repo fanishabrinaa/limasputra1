@@ -21,7 +21,16 @@ class Detail extends Component
     }
 
     public function render()
-    {
-        return view('livewire.armada.detail')->layout('layouts.app');
-    }
+{
+    $armadaLain = Armada::with('fasilitas')
+        ->where('id', '!=', $this->armada->id)
+        ->where('status', 'tersedia')
+        ->latest()
+        ->take(3)
+        ->get();
+
+    return view('livewire.armada.detail', [
+        'armadaLain' => $armadaLain,
+    ])->layout('layouts.app');
+}
 }
