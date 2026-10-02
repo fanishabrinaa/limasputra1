@@ -53,17 +53,17 @@
     <h2 class="lp-scroll text-3xl font-bold text-slate-900 mb-2">Mengapa Memilih Kami?</h2>
     <div class="lp-scroll lp-pulse-line w-16 h-1 bg-rose-600 mx-auto mb-12 rounded-full"></div>
 
-    <div data-autoscroll class="flex gap-5 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-4 md:gap-8 md:overflow-visible text-left max-w-7xl mx-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        @foreach ($mengapaKami as $index => $item)
-            <div
-                class="lp-scroll-zoom lp-motion-card flex-shrink-0 w-64 snap-start md:w-auto bg-white border border-slate-200/80 rounded-2xl p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-rose-200 transition-all duration-300 group"
-                style="--delay: {{ $index * 120 }}ms;"
-            >
-                <h3 class="font-bold text-slate-900 text-lg mb-2">{{ $item['title'] }}</h3>
-                <p class="text-sm text-slate-600 leading-relaxed">{{ $item['desc'] }}</p>
-            </div>
-        @endforeach
-    </div>
+<div data-autoscroll class="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 md:grid md:grid-cols-4 md:gap-8 md:overflow-visible text-left max-w-7xl mx-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+    @foreach ($mengapaKami as $index => $item)
+        <div
+            class="lp-why-card lp-scroll-zoom lp-motion-card snap-start snap-always bg-white border border-slate-200/80 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-rose-200 transition-all duration-300 group"
+            style="--delay: {{ $index * 120 }}ms;"
+        >
+            <h3 class="font-bold text-slate-900 text-lg mb-2">{{ $item['title'] }}</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">{{ $item['desc'] }}</p>
+        </div>
+    @endforeach
+</div>
 </div>
 
     <!-- UNIT BISNIS -->

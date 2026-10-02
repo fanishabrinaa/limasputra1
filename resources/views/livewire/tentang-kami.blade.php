@@ -145,43 +145,43 @@ $units = [
             </div>
         </section>
             <!-- 5. VISI & MISI -->
-        <section class="py-14 sm:py-24 bg-slate-950 text-white relative overflow-hidden">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-rose-600/10 blur-[120px] rounded-full pointer-events-none"></div>
+<section class="py-14 sm:py-24 bg-slate-950 text-white relative overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-rose-600/10 blur-[120px] rounded-full pointer-events-none"></div>
 
-            <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-                <div class="text-center mb-8 sm:mb-14 lp-scroll" style="--delay: 0ms;">
-                    <span class="text-rose-400 text-xs font-bold tracking-widest uppercase mb-2 block">ARAH & TUJUAN</span>
-                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Visi & Misi Perusahaan</h2>
-                </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center mb-8 sm:mb-14 lp-scroll" style="--delay: 0ms;">
+            <span class="text-rose-400 text-xs font-bold tracking-widest uppercase mb-2 block">ARAH & TUJUAN</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Visi & Misi Perusahaan</h2>
+        </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8">
-                        <div class="lp-motion-card lp-scroll-zoom bg-gradient-to-br from-slate-900 to-slate-900/50 p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl border border-slate-800 backdrop-blur-xl shadow-2xl" style="--delay: 120ms;">
-                        <h3 class="text-lg sm:text-2xl font-bold text-white mb-2 sm:mb-4">Visi Kami</h3>
-                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                            Menjadi perusahaan pilihan utama berbasis solusi terpadu di Indonesia, menghubungkan kebutuhan transportasi, pembangunan, dan infrastruktur secara tepercaya dan berkelanjutan.
-                        </p>
-                    </div>
-
-                    <div class="lp-motion-card lp-scroll-zoom bg-gradient-to-br from-slate-900 to-slate-900/50 p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl border border-slate-800 backdrop-blur-xl shadow-2xl" style="--delay: 240ms;">
-                        <h3 class="text-lg sm:text-2xl font-bold text-white mb-2 sm:mb-4">Misi Kami</h3>
-                        <ul class="text-slate-300 text-xs sm:text-sm space-y-3 sm:space-y-4 leading-relaxed">
-                            <li class="flex items-start gap-3">
-                                <span class="w-2 h-2 rounded-full bg-rose-500 mt-2 flex-shrink-0"></span>
-                                <span>Memberikan layanan transportasi aman, nyaman, dan tepat waktu bagi seluruh pelanggan nasional.</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="w-2 h-2 rounded-full bg-rose-500 mt-2 flex-shrink-0"></span>
-                                <span>Menyediakan material bangunan berkualitas tinggi dengan harga kompetitif untuk mendukung konstruksi.</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="w-2 h-2 rounded-full bg-rose-500 mt-2 flex-shrink-0"></span>
-                                <span>Mengembangkan sumber daya manusia yang profesional dan adopsi teknologi tepat guna.</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            <div class="lp-motion-card lp-scroll-zoom bg-gradient-to-br from-slate-900 to-slate-900/50 p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl border border-slate-800 backdrop-blur-xl shadow-2xl" style="--delay: 120ms;">
+                <h3 class="text-lg sm:text-2xl font-bold text-white mb-3 sm:mb-4">Visi Kami</h3>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                    Menjadi perusahaan pilihan utama berbasis solusi terpadu di Indonesia, menghubungkan kebutuhan transportasi, pembangunan, dan infrastruktur secara tepercaya dan berkelanjutan.
+                </p>
             </div>
-        </section>
+
+            <div class="lp-motion-card lp-scroll-zoom bg-gradient-to-br from-slate-900 to-slate-900/50 p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl border border-slate-800 backdrop-blur-xl shadow-2xl" style="--delay: 240ms;">
+                <h3 class="text-lg sm:text-2xl font-bold text-white mb-3 sm:mb-4">Misi Kami</h3>
+                <ul class="text-slate-300 text-sm space-y-3 sm:space-y-4 leading-relaxed">
+                    <li class="flex items-start gap-3">
+                        <span class="w-2 h-2 rounded-full bg-rose-500 mt-2 flex-shrink-0"></span>
+                        <span>Memberikan layanan transportasi aman, nyaman, dan tepat waktu bagi seluruh pelanggan nasional.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="w-2 h-2 rounded-full bg-rose-500 mt-2 flex-shrink-0"></span>
+                        <span>Menyediakan material bangunan berkualitas tinggi dengan harga kompetitif untuk mendukung konstruksi.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="w-2 h-2 rounded-full bg-rose-500 mt-2 flex-shrink-0"></span>
+                        <span>Mengembangkan sumber daya manusia yang profesional dan adopsi teknologi tepat guna.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
             <!-- 6. NILAI-NILAI UTAMA (VALUES) -->
         <section class="pt-14 sm:pt-20 pb-6 sm:pb-10 bg-white">
             <div class="max-w-7xl mx-auto px-6 lg:px-8">
@@ -191,14 +191,14 @@ $units = [
                     <p class="text-slate-500 text-sm sm:text-base max-w-xl mx-auto">Prinsip yang mengarahkan setiap keputusan dan tindakan kami dalam melayani Anda.</p>
                 </div>
 
-                <div data-autoscroll class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                    @foreach($values as $val)
-                        <div class="lp-motion-card lp-scroll-zoom flex-shrink-0 w-64 snap-start md:w-auto p-6 sm:p-8 bg-slate-50 hover:bg-white rounded-2xl border border-slate-200/80 text-center hover:shadow-xl hover:border-rose-200 transition-all duration-300 group" style="--delay: {{ $loop->index * 120 }}ms;">
-                            <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-2 sm:mb-3">{{ $val['title'] }}</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed">{{ $val['desc'] }}</p>
-                        </div>
-                    @endforeach
+        <div data-autoscroll class="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            @foreach($values as $val)
+                <div class="lp-why-card lp-motion-card lp-scroll-zoom snap-start snap-always bg-slate-50 hover:bg-white rounded-2xl border border-slate-200/80 text-center hover:shadow-xl hover:border-rose-200 transition-all duration-300 group" style="--delay: {{ $loop->index * 120 }}ms;">
+                    <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-2 sm:mb-3">{{ $val['title'] }}</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">{{ $val['desc'] }}</p>
                 </div>
+            @endforeach
+        </div>
             </div>
         </section>
 
