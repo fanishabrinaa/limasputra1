@@ -148,12 +148,17 @@
             </div>
         </aside>
         <!-- MOBILE TOP BAR HEADER -->
-        <div x-data="{ mobileNavOpen: false }">
+        <div x-data="{ mobileNavOpen: false }"
+            x-effect="document.body.style.overflow = mobileNavOpen ? 'hidden' : ''">
             <div class="md:hidden fixed top-0 left-0 right-0 bg-slate-950 text-white px-4 py-3 flex justify-between items-center z-40 border-b border-slate-900 shadow-md">
-                <span class="font-bold text-rose-500 text-sm flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-rose-600"></span>
+                <a href="{{ route('dashboard') }}" class="font-bold text-rose-500 text-sm flex items-center gap-2">
+                    @if (\App\Models\Setting::get('logo'))
+                        <img src="{{ Storage::url(\App\Models\Setting::get('logo')) }}" alt="Logo" class="h-7 w-auto object-contain">
+                    @else
+                        <span class="w-2.5 h-2.5 rounded-full bg-rose-600"></span>
+                    @endif
                     {{ \App\Models\Setting::get('nama_perusahaan', 'Putra Limas') }}
-                </span>
+                </a>
                 <button @click="mobileNavOpen = true" class="text-white">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -172,17 +177,21 @@
 
             <!-- DRAWER MENU MOBILE -->
             <aside x-show="mobileNavOpen" x-cloak
-                   class="md:hidden fixed top-0 left-0 h-screen w-72 max-w-[85vw] bg-slate-950 text-white z-50 overflow-y-auto"
-                   x-transition:enter="transition ease-out duration-300"
+                   class="md:hidden fixed top-0 left-0 h-dvh w-72 max-w-[85vw] bg-slate-950 text-white z-50 overflow-y-auto overscroll-contain"
                    x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
                    x-transition:leave="transition ease-in duration-200"
                    x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
                    style="display: none;">
 
                 <div class="px-6 py-6 border-b border-slate-900 flex items-center justify-between">
-                    <span class="font-extrabold text-base text-white">
-                        {{ \App\Models\Setting::get('nama_perusahaan', 'Putra Limas') }}
-                    </span>
+                    <a href="{{ route('dashboard') }}" class="flex items-center gap-2.5">
+                        @if (\App\Models\Setting::get('logo'))
+                            <img src="{{ Storage::url(\App\Models\Setting::get('logo')) }}" alt="Logo" class="h-8 w-auto object-contain">
+                        @endif
+                        <span class="font-extrabold text-base text-white">
+                            {{ \App\Models\Setting::get('nama_perusahaan', 'Putra Limas') }}
+                        </span>
+                    </a>
                     <button @click="mobileNavOpen = false" class="text-slate-400 hover:text-white">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -213,6 +222,7 @@
                             <a href="{{ route('fasilitas') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg font-semibold {{ request()->routeIs('fasilitas') ? 'bg-rose-700 text-white' : 'text-slate-400 hover:bg-slate-900 hover:text-white' }}">Fasilitas Bus</a>
                             <a href="{{ route('produk.index') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg font-semibold {{ request()->routeIs('produk.index') ? 'bg-rose-700 text-white' : 'text-slate-400 hover:bg-slate-900 hover:text-white' }}">Bahan Bangunan</a>
                             <a href="{{ route('setting.konten-konstruksi') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg font-semibold {{ request()->routeIs('setting.konten-konstruksi') ? 'bg-rose-700 text-white' : 'text-slate-400 hover:bg-slate-900 hover:text-white' }}">Konten Konstruksi</a>
+                            <a href="{{ route('setting.konten-unit-usaha') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg font-semibold {{ request()->routeIs('setting.konten-unit-usaha') ? 'bg-rose-700 text-white' : 'text-slate-400 hover:bg-slate-900 hover:text-white' }}">Konten Unit Usaha</a>
                         </div>
                     </div>
 
@@ -235,7 +245,8 @@
                     </div>
                 </nav>
 
-                <div class="px-4 py-4 border-t border-slate-900 space-y-1.5 bg-slate-950/80 mt-auto">
+                <div class="px-4 pt-4 border-t border-slate-900 space-y-1.5 bg-slate-950/80 mt-auto"
+                style="padding-bottom: max(1.5rem, env(safe-area-inset-bottom));">
                     <a href="{{ route('beranda') }}" target="_blank" class="flex items-center gap-3 px-3.5 py-2 rounded-xl text-slate-400 hover:bg-slate-900 hover:text-white text-xs font-medium">Lihat Website</a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf

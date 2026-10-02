@@ -128,13 +128,13 @@
                     </div>
                 </div>
 
-                <!-- Unit Bisnis Badges -->
+               <!-- Unit Bisnis Badges -->
                 <div class="pt-2">
                     <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-3">DIVISI LAYANAN KAMI</span>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-slate-900 text-white text-xs px-3.5 py-1.5 rounded-full font-semibold">Bus Pariwisata</span>
-                        <span class="bg-rose-700 text-white text-xs px-3.5 py-1.5 rounded-full font-semibold">Bahan Bangunan</span>
-                        <span class="bg-slate-700 text-white text-xs px-3.5 py-1.5 rounded-full font-semibold">Jasa Konstruksi</span>
+                    <div class="grid grid-cols-3 gap-2">
+                        <span class="bg-slate-900 text-white text-[11px] sm:text-xs px-2 py-2 rounded-full font-semibold text-center leading-tight whitespace-nowrap">Bus Pariwisata</span>
+                        <span class="bg-rose-700 text-white text-[11px] sm:text-xs px-2 py-2 rounded-full font-semibold text-center leading-tight whitespace-nowrap">Bahan Bangunan</span>
+                        <span class="bg-slate-700 text-white text-[11px] sm:text-xs px-2 py-2 rounded-full font-semibold text-center leading-tight whitespace-nowrap">Jasa Konstruksi</span>
                     </div>
                 </div>
 
