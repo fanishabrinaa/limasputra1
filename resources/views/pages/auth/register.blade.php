@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar - {{ \App\Models\Setting::get('nama_perusahaan', 'Putra Limas') }}</title>
     @php
-    $logoLogin = \App\Models\Setting::get('logo');
-@endphp
+        $logoLogin = \App\Models\Setting::get('logo');
+    @endphp
 
-@if ($logoLogin)
-    <link rel="icon" type="image/png" href="{{ Storage::url($logoLogin) }}">
-@endif
+    @if ($logoLogin)
+        <link rel="icon" type="image/png" href="{{ Storage::url($logoLogin) }}">
+    @endif
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-slate-950 font-sans antialiased text-slate-800 selection:bg-rose-500 selection:text-white relative min-h-screen overflow-x-hidden">
@@ -35,7 +35,6 @@
                     <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/70"></div>
 
                     <div class="relative z-10 flex items-center justify-between">
-                       
                         <div class="w-9 h-9 rounded-full bg-white/15 flex items-center justify-center shrink-0">
                             <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
@@ -67,10 +66,10 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                 </svg>
                             </span>
-                            <input type="text" 
-                                   name="name" 
-                                   value="{{ old('name') }}" 
-                                   required 
+                            <input type="text"
+                                   name="name"
+                                   value="{{ old('name') }}"
+                                   required
                                    autofocus
                                    placeholder="Nama lengkap Anda"
                                    class="w-full bg-slate-50 border border-slate-300 rounded-xl pl-11 pr-4 py-3 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-700 transition">
@@ -87,15 +86,16 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                 </svg>
                             </span>
-                            <input type="email" 
-                                   name="email" 
-                                   value="{{ old('email') }}" 
+                            <input type="email"
+                                   name="email"
+                                   value="{{ old('email') }}"
                                    required
                                    placeholder="nama@email.com"
                                    class="w-full bg-slate-50 border border-slate-300 rounded-xl pl-11 pr-4 py-3 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-700 transition">
                         </div>
                         @error('email') <p class="text-rose-600 text-xs mt-1.5 font-medium">{{ $message }}</p> @enderror
                     </div>
+
                     <!-- NO. HP / WHATSAPP -->
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">No. HP / WhatsApp</label>
@@ -106,172 +106,100 @@
                                 </svg>
                             </span>
                             <input type="text"
-                                name="no_hp"
-                                value="{{ old('no_hp') }}"
-                                required
-                                placeholder="08xxxxxxxxxx"
-                                class="w-full bg-slate-50 border border-slate-300 rounded-xl pl-11 pr-4 py-3 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-700 transition">
+                                   name="no_hp"
+                                   value="{{ old('no_hp') }}"
+                                   required
+                                   placeholder="08xxxxxxxxxx"
+                                   class="w-full bg-slate-50 border border-slate-300 rounded-xl pl-11 pr-4 py-3 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-700 transition">
                         </div>
                         @error('no_hp') <p class="text-rose-600 text-xs mt-1.5 font-medium">{{ $message }}</p> @enderror
                     </div>
 
-<!-- PASSWORD -->
-<div>
-    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
-        Password
-    </label>
+                    <!-- PASSWORD -->
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Password</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 10-8 0v4h8z" />
+                                </svg>
+                            </span>
 
-    <div class="relative">
-        <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 10-8 0v4h8z"
-                />
-            </svg>
-        </span>
+                            <input type="password"
+                                   name="password"
+                                   id="password"
+                                   required
+                                   placeholder="••••••••"
+                                   class="w-full bg-slate-50 border border-slate-300 rounded-xl pl-11 pr-12 py-3 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-700 transition">
 
-        <input
-            type="password"
-            name="password"
-            id="password"
-            required
-            placeholder="••••••••"
-            class="w-full bg-slate-50 border border-slate-300 rounded-xl pl-11 pr-12 py-3 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-700 transition"
-        >
+                            <!-- Tombol lihat password -->
+                            <button type="button"
+                                    onclick="togglePassword('password', this)"
+                                    class="absolute right-0 top-0 h-full px-4 flex items-center text-slate-400 hover:text-slate-600 transition"
+                                    aria-label="Tampilkan password">
+                                <!-- mata terbuka -->
+                                <svg class="eye-open w-4 h-4" style="display:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                                <!-- mata dicoret -->
+                                <svg class="eye-closed w-4 h-4" style="display:none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                                </svg>
+                            </button>
+                        </div>
 
-        <!-- Tombol lihat password -->
-        <button
-            type="button"
-            onclick="togglePassword('password', this)"
-            class="absolute right-0 top-0 h-full px-4 flex items-center text-slate-400 hover:text-slate-600 transition"
-            aria-label="Tampilkan password"
-        >
-            <!-- mata terbuka -->
-            <svg
-                class="eye-open w-4 h-4"
-                style="display:block"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-            >
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                />
-            </svg>
-
-            <!-- mata dicoret -->
-            <svg
-                class="eye-closed w-4 h-4"
-                style="display:none"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-            >
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
-                />
-            </svg>
-        </button>
-    </div>
-
-    @error('password')
-        <p class="text-rose-600 text-xs mt-1.5 font-medium">{{ $message }}</p>
-    @enderror
-</div>
+                        @error('password')
+                            <p class="text-rose-600 text-xs mt-1.5 font-medium">{{ $message }}</p>
+                        @enderror
+                    </div>
 
                     <!-- KONFIRMASI PASSWORD -->
-<div>
-    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
-        Konfirmasi Password
-    </label>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Konfirmasi Password</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </span>
 
-    <div class="relative">
-        <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-            </svg>
-        </span>
+                            <input type="password"
+                                   name="password_confirmation"
+                                   id="password_confirmation"
+                                   required
+                                   placeholder="••••••••"
+                                   class="w-full bg-slate-50 border border-slate-300 rounded-xl pl-11 pr-12 py-3 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-700 transition">
 
-        <input
-            type="password"
-            name="password_confirmation"
-            id="password_confirmation"
-            required
-            placeholder="••••••••"
-            class="w-full bg-slate-50 border border-slate-300 rounded-xl pl-11 pr-12 py-3 text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-700 transition"
-        >
+                            <!-- Tombol lihat password -->
+                            <button type="button"
+                                    onclick="togglePassword('password_confirmation', this)"
+                                    class="absolute right-0 top-0 h-full px-4 flex items-center text-slate-400 hover:text-slate-600 transition"
+                                    aria-label="Tampilkan konfirmasi password">
+                                <!-- mata terbuka -->
+                                <svg class="eye-open w-4 h-4" style="display:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                                <!-- mata dicoret -->
+                                <svg class="eye-closed w-4 h-4" style="display:none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                                </svg>
+                            </button>
+                        </div>
 
-        <!-- Tombol lihat password -->
-        <button
-            type="button"
-            onclick="togglePassword('password_confirmation', this)"
-            class="absolute right-0 top-0 h-full px-4 flex items-center text-slate-400 hover:text-slate-600 transition"
-            aria-label="Tampilkan konfirmasi password"
-        >
-            <!-- mata terbuka -->
-            <svg
-                class="eye-open w-4 h-4"
-                style="display:block"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-            >
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                />
-            </svg>
+                        @error('password_confirmation')
+                            <p class="text-rose-600 text-xs mt-1.5 font-medium">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-            <!-- mata dicoret -->
-            <svg
-                class="eye-closed w-4 h-4"
-                style="display:none"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-            >
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
-                />
-            </svg>
-        </button>
-    </div>
+                    <!-- TOMBOL DAFTAR -->
+                    <button type="submit"
+                            class="w-full bg-rose-700 hover:bg-rose-800 text-white font-bold text-sm uppercase tracking-wider rounded-xl py-3.5 shadow-lg shadow-rose-700/20 transition focus:outline-none focus:ring-2 focus:ring-rose-500/40 active:scale-[0.99]">
+                        Daftar Sekarang
+                    </button>
+                </form>
 
-    @error('password_confirmation')
-        <p class="text-rose-600 text-xs mt-1.5 font-medium">{{ $message }}</p>
-    @enderror
-</div>
                 <!-- LOGIN LINK -->
                 <div class="pt-6 mt-6 border-t border-slate-100 text-center">
                     <p class="text-xs text-slate-500">
@@ -292,17 +220,25 @@
 
             <!-- PANEL ILUSTRASI (kanan di layar besar) - GAMBAR FULL, TANPA MERAH -->
             <div class="order-1 lg:order-2 hidden lg:flex flex-col justify-between relative overflow-hidden">
-
                 <img
                     src="{{ asset('images/login-limas-putra.png') }}"
                     alt="Putra Limas - Bus Pariwisata, Toko Bangunan dan Jasa Konstruksi"
                     class="absolute inset-0 w-full h-full object-cover"
                 >
-
                 <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/10 to-black/70"></div>
             </div>
 
         </div>
     </div>
+
+    <script>
+        function togglePassword(inputId, btn) {
+            const input = document.getElementById(inputId);
+            const isHidden = input.type === 'password';
+            input.type = isHidden ? 'text' : 'password';
+            btn.querySelector('.eye-open').style.display = isHidden ? 'none' : 'block';
+            btn.querySelector('.eye-closed').style.display = isHidden ? 'block' : 'none';
+        }
+    </script>
 </body>
 </html>
