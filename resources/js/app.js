@@ -12,6 +12,7 @@ const scrollObserver = new IntersectionObserver(
 );
 
 function observeScrollElements(root = document) {
+    // Mengamati elemen animasi agar tampil saat masuk ke area layar.
     root.querySelectorAll(
         '.lp-scroll:not(.lp-visible), .lp-reveal:not(.lp-visible), .lp-scroll-left:not(.lp-visible), .lp-scroll-right:not(.lp-visible), .lp-scroll-zoom:not(.lp-visible), .lp-scroll-rotate:not(.lp-visible)'
     ).forEach((el) => {
@@ -27,6 +28,7 @@ const domWatcher = new MutationObserver(() => {
 let domWatcherStarted = false;
 
 function initScrollAnimation() {
+    // Memasang pengamat halaman agar elemen baru dari Livewire ikut dianimasikan.
     observeScrollElements();
 
     if (!domWatcherStarted) {
@@ -42,6 +44,7 @@ function initScrollAnimation() {
 }
 
 function initMobileMenu() {
+    // Mengatur buka-tutup menu navigasi pada layar kecil.
     const toggle = document.querySelector('[data-mobile-menu-toggle]');
     const menu = document.querySelector('#mobile-menu');
     const close = document.querySelector('[data-mobile-menu-close]');

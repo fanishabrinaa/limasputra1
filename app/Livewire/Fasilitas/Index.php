@@ -13,6 +13,7 @@ class Index extends Component
 
     public function render()
     {
+        // Mengambil daftar fasilitas untuk ditampilkan di halaman admin.
         return view('livewire.fasilitas.index', [
             'daftarFasilitas' => Fasilitas::latest()->get(),
         ])->layout('layouts.admin');
@@ -20,6 +21,7 @@ class Index extends Component
 
     public function simpan()
     {
+        // Memeriksa nama fasilitas lalu membuat atau memperbarui datanya.
         $this->validate([
             'nama_fasilitas' => 'required|string|max:255',
         ]);
@@ -35,6 +37,7 @@ class Index extends Component
 
     public function edit($id)
     {
+        // Mengambil fasilitas yang dipilih untuk mengisi formulir edit.
         $data = Fasilitas::findOrFail($id);
         $this->fasilitas_id = $data->id;
         $this->nama_fasilitas = $data->nama_fasilitas;
@@ -43,6 +46,7 @@ class Index extends Component
 
     public function hapus($id)
     {
+        // Menghapus fasilitas yang dipilih dari database.
         Fasilitas::findOrFail($id)->delete();
         session()->flash('message', 'Fasilitas berhasil dihapus.');
     }

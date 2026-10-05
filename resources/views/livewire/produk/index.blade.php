@@ -1,3 +1,4 @@
+{{-- Halaman admin untuk menambah, mengubah, dan menghapus produk bangunan. --}}
 <div class="p-6 md:p-8">
     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-6">
         <div>

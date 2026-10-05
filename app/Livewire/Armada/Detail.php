@@ -13,6 +13,7 @@ class Detail extends Component
 
     public function mount($id)
     {
+        // Mengambil detail armada dan testimoni yang sudah disetujui admin.
         $this->armada = Armada::with('fasilitas')->findOrFail($id);
 
         $this->testimoni = Testimoni::where('tampilkan', true)
@@ -23,6 +24,7 @@ class Detail extends Component
 
     public function render()
     {
+        // Mengambil hingga tiga armada lain yang masih tersedia.
         $armadaLain = Armada::with('fasilitas')
             ->where('id', '!=', $this->armada->id)
             ->where('status', 'tersedia')

@@ -9,6 +9,7 @@ class RegisterResponse implements RegisterResponseContract
 {
     public function toResponse($request)
     {
+        // Mengakhiri sesi setelah pendaftaran agar pengguna masuk melalui halaman login.
         // Fortify login otomatis setelah daftar, jadi kita logout lagi
         Auth::logout();
         $request->session()->invalidate();

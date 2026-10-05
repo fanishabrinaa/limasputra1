@@ -24,6 +24,7 @@ class Index extends Component
 
     public function mount()
     {
+        // Mengisi formulir profil dengan data akun yang sedang login.
         $user = Auth::user();
 
         $this->name  = $user->name;
@@ -43,6 +44,7 @@ class Index extends Component
     {
         $user = Auth::user();
 
+        // Memeriksa data profil sebelum menyimpan perubahan.
         $this->validate([
             ...$this->profileRules($user->id),
             'no_hp' => 'required|string|max:20',
@@ -62,11 +64,13 @@ class Index extends Component
      */
     public function updatePassword()
     {
+        // Memeriksa kata sandi lama dan aturan kata sandi baru.
         $this->validate([
             'current_password' => $this->currentPasswordRules(),
             'password'         => $this->passwordRules(),
         ]);
 
+        // Menyimpan kata sandi baru dalam bentuk hash.
         Auth::user()->forceFill([
             'password' => Hash::make($this->password),
         ])->save();

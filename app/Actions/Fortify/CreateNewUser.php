@@ -15,12 +15,14 @@ class CreateNewUser implements CreatesNewUsers
 
     public function create(array $input): User
     {
+        // Memeriksa data pendaftaran sebelum membuat akun baru.
         Validator::make($input, [
             ...$this->profileRules(),
             'no_hp'    => 'required|string|max:20',
             'password' => $this->passwordRules(),
         ])->validate();
 
+        // Membuat akun dengan kata sandi yang sudah diubah menjadi bentuk hash.
         $user = User::create([
             'name'     => $input['name'],
             'email'    => $input['email'],
@@ -28,6 +30,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
         ]);
 
+        // Menetapkan akun pendaftar sebagai pelanggan.
         $user->forceFill(['role' => 'customer'])->save();
 
         return $user;

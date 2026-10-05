@@ -1,3 +1,4 @@
+{{-- Form admin untuk mengatur profil, kontak, jam layanan, dan logo perusahaan. --}}
 <div class="p-6 md:p-8">
     <div class="mb-6">
         <h1 class="text-2xl font-bold text-slate-800">Pengaturan Perusahaan</h1>

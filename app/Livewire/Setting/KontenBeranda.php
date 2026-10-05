@@ -29,6 +29,7 @@ class KontenBeranda extends Component
 
     public function mount()
     {
+        // Mengambil konten beranda yang tersimpan untuk mengisi formulir admin.
         $this->unitbisnis_judul   = Setting::get('beranda_unitbisnis_judul', 'Unit Bisnis Strategis Kami');
         $this->unitbisnis_paragraf = Setting::get('beranda_unitbisnis_paragraf', 'Putra Limas mengintegrasikan tiga pilar bisnis utama untuk mendukung kebutuhan mobilitas dan pembangunan infrastruktur di Indonesia.');
 
@@ -51,6 +52,7 @@ class KontenBeranda extends Component
 
     public function simpan()
     {
+        // Memeriksa data konten sebelum menyimpan perubahan beranda.
         $this->validate([
             'unitbisnis_judul'    => 'required|string|max:255',
             'unitbisnis_paragraf' => 'required|string',
@@ -68,6 +70,7 @@ class KontenBeranda extends Component
             'cta_paragraf' => 'required|string',
         ]);
 
+        // Menyimpan bagian unit bisnis, kemitraan, dan ajakan pada halaman beranda.
         Setting::set('beranda_unitbisnis_judul', $this->unitbisnis_judul);
         Setting::set('beranda_unitbisnis_paragraf', $this->unitbisnis_paragraf);
         Setting::set('beranda_desc_bus', $this->desc_bus);

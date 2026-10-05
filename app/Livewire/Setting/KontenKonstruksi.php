@@ -16,6 +16,7 @@ class KontenKonstruksi extends Component
 
     public function mount()
     {
+        // Mengambil deskripsi dan daftar layanan konstruksi dari pengaturan.
         $this->konstruksi_hero_desc = Setting::get(
             'konstruksi_hero_desc',
             'Solusi pembangunan gedung, rumah, jalan, dan berbagai proyek konstruksi dengan tenaga profesional dan material berkualitas.'
@@ -28,6 +29,7 @@ class KontenKonstruksi extends Component
 
     protected function rules()
     {
+        // Memastikan deskripsi dan minimal satu layanan diisi dengan benar.
         return [
             'konstruksi_hero_desc'        => 'required|string',
             'konstruksi_layanan'          => 'required|array|min:1',
@@ -43,17 +45,20 @@ class KontenKonstruksi extends Component
 
     public function tambahLayanan()
     {
+        // Menambahkan baris layanan kosong pada formulir.
         $this->konstruksi_layanan[] = ['title' => '', 'desc' => ''];
     }
 
     public function hapusLayanan($index)
     {
+        // Menghapus layanan terpilih lalu merapikan urutan daftar.
         unset($this->konstruksi_layanan[$index]);
         $this->konstruksi_layanan = array_values($this->konstruksi_layanan);
     }
 
     public function simpan()
     {
+        // Memeriksa lalu menyimpan konten konstruksi dan daftar layanannya.
         $this->validate();
 
         Setting::set('konstruksi_hero_desc', $this->konstruksi_hero_desc);

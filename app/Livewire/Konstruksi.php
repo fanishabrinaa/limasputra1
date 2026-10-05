@@ -9,6 +9,7 @@ class Konstruksi extends Component
 {
     public function render()
     {
+        // Mengambil deskripsi dan daftar layanan konstruksi untuk halaman publik.
         return view('livewire.konstruksi', [
             'hero_desc' => Setting::get(
                 'konstruksi_hero_desc',

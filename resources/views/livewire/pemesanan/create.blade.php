@@ -67,6 +67,7 @@
         </div>
 
 
+        {{-- Form ini mengirim data perjalanan ke method simpan pada komponen Livewire. --}}
         <form wire:submit="simpan" class="space-y-6">
 
             <!-- ===================================================== -->

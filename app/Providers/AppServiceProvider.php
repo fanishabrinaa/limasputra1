@@ -31,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
      */
     protected function configureDefaults(): void
     {
+        // Mengatur tanggal, mencegah perintah hapus berbahaya di produksi, dan aturan kata sandi.
         Date::use(CarbonImmutable::class);
 
         DB::prohibitDestructiveCommands(

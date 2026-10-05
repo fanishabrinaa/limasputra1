@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pemesanan extends Model
 {
+    // Kolom yang boleh diisi saat data pemesanan dibuat atau diperbarui.
     protected $fillable = [
         'kode_pemesanan',
         'armada_id',
@@ -23,14 +24,17 @@ class Pemesanan extends Model
         'alasan_penolakan',
         'jemputan',
     ];
+    // Satu pemesanan dapat memiliki satu testimoni.
     public function testimoni()
 {
     return $this->hasOne(Testimoni::class);
 }
+    // Menghubungkan pemesanan dengan armada yang disewa.
     public function armada()
     {
         return $this->belongsTo(Armada::class);
     }
+    // Menghubungkan pemesanan dengan akun pelanggan.
     public function user()
     {
         return $this->belongsTo(User::class);

@@ -8,6 +8,7 @@ class LoginResponse implements LoginResponseContract
 {
     public function toResponse($request)
     {
+        // Mengarahkan admin ke dashboard dan pelanggan ke halaman beranda.
         if (auth()->user()->role === 'admin') {
             return redirect('/dashboard');
         }

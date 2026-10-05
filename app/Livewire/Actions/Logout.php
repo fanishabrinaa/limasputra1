@@ -14,6 +14,7 @@ class Logout
      */
     public function __invoke(): Redirector|RedirectResponse
     {
+        // Mengakhiri sesi pengguna dan membuat token sesi baru sebelum kembali ke beranda.
         Auth::guard('web')->logout();
 
         Session::invalidate();

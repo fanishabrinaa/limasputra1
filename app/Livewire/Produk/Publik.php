@@ -20,11 +20,13 @@ class Publik extends Component
 
     public function setKategori(string $kategori)
     {
+        // Mengubah kategori yang dipakai untuk menyaring daftar produk.
         $this->kategoriAktif = $kategori;
     }
 
     public function render()
     {
+        // Mengambil produk sesuai kategori yang sedang dipilih pengunjung.
         $query = ProdukBangunan::query();
 
         if ($this->kategoriAktif !== 'Semua Produk') {

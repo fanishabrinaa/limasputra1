@@ -14,6 +14,7 @@ trait PasswordValidationRules
      */
     protected function passwordRules(): array
     {
+        // Kata sandi baru wajib diisi dan harus cocok dengan konfirmasinya.
         return ['required', 'string', Password::default(), 'confirmed'];
     }
 
@@ -24,6 +25,7 @@ trait PasswordValidationRules
      */
     protected function currentPasswordRules(): array
     {
+        // Memastikan kata sandi lama sesuai dengan akun yang sedang login.
         return ['required', 'string', 'current_password'];
     }
 }

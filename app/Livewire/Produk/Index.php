@@ -28,6 +28,7 @@ class Index extends Component
 
     protected function rules()
     {
+        // Memeriksa isian produk dan memastikan gambar memiliki format yang diizinkan.
         return [
             'nama_produk' => 'required|string|max:255',
             'kategori'    => 'required|string|max:255',
@@ -38,6 +39,7 @@ class Index extends Component
 
     public function render()
     {
+        // Mengambil daftar produk terbaru untuk ditampilkan di halaman admin.
         return view('livewire.produk.index', [
             'daftarProduk' => ProdukBangunan::latest()->get(),
         ])->layout('layouts.admin');
@@ -60,14 +62,17 @@ class Index extends Component
 
     public function simpan()
     {
+        // Memeriksa isian sebelum data produk disimpan.
         $this->validate();
 
         $path = $this->gambar_lama;
 
         if ($this->gambar) {
+            // Menyimpan gambar produk ke penyimpanan publik.
             $path = $this->gambar->store('produk', 'public');
         }
 
+        // Membuat produk baru atau memperbarui produk yang sedang diedit.
         ProdukBangunan::updateOrCreate(
             ['id' => $this->produk_id],
             [
@@ -85,6 +90,7 @@ class Index extends Component
 
     public function edit($id)
     {
+        // Mengambil data produk untuk mengisi formulir edit.
         $data = ProdukBangunan::findOrFail($id);
 
         $this->produk_id   = $data->id;
@@ -99,6 +105,7 @@ class Index extends Component
 
     public function hapus($id)
     {
+        // Menghapus produk yang dipilih dari database.
         ProdukBangunan::findOrFail($id)->delete();
 
         session()->flash('message', 'Produk berhasil dihapus.');

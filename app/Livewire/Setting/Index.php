@@ -25,6 +25,7 @@ class Index extends Component
 
     public function mount()
     {
+        // Mengisi formulir dari pengaturan website yang sudah tersimpan.
         $this->nama_perusahaan = Setting::get('nama_perusahaan');
         $this->deskripsi       = Setting::get('deskripsi');
         $this->alamat          = Setting::get('alamat');
@@ -45,6 +46,7 @@ class Index extends Component
 
     public function simpan()
     {
+        // Memeriksa data perusahaan dan file logo sebelum disimpan.
         $this->validate([
             'nama_perusahaan' => 'required|string|max:255',
             'deskripsi'       => 'nullable|string',
@@ -54,6 +56,7 @@ class Index extends Component
             'logo'            => 'nullable|image|max:1024',
         ]);
 
+        // Menyimpan informasi perusahaan dan kontak ke tabel pengaturan.
         Setting::set('nama_perusahaan', $this->nama_perusahaan);
         Setting::set('deskripsi', $this->deskripsi);
         Setting::set('alamat', $this->alamat);
@@ -66,6 +69,7 @@ class Index extends Component
         Setting::set('jam_jumat', $this->jam_jumat);
 
         if ($this->logo) {
+            // Menyimpan logo baru dan memperbarui lokasi file yang tercatat.
             $path = $this->logo->store('logo', 'public');
             Setting::set('logo', $path);
             $this->logo_lama = $path;

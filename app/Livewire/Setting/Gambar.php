@@ -41,6 +41,7 @@ class Gambar extends Component
 
     public function mount()
     {
+        // Memuat gambar yang tersimpan agar admin dapat melihat kondisi saat ini.
         foreach ($this->slots as $key => $label) {
             $this->current[$key] = $key === 'img_halaman_hero'
                 ? Setting::get($key, Setting::get('img_unit_usaha_hero'))
@@ -60,11 +61,13 @@ class Gambar extends Component
 
     public function simpanSatu($key)
     {
+        // Memeriksa file lalu menyimpan gambar untuk satu bagian website.
         $this->validate([
             "uploads.$key" => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
         if (!empty($this->uploads[$key])) {
+            // Menyimpan file dan memperbarui lokasi gambarnya di pengaturan.
             $path = $this->uploads[$key]->store('site', 'public');
             Setting::set($key, $path);
             $this->current[$key] = $path;
@@ -79,6 +82,7 @@ class Gambar extends Component
      */
     public function simpanGaleri($key)
     {
+        // Memeriksa kumpulan file gambar sebelum ditambahkan ke galeri.
         $this->validate([
             "galleryUploads.$key.*" => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
@@ -104,6 +108,7 @@ class Gambar extends Component
      */
     public function hapusFotoGaleri($key, $index)
     {
+        // Menghapus foto terpilih dari daftar galeri yang tersimpan.
         $existing = $this->galleryCurrent[$key] ?? [];
 
         if (isset($existing[$index])) {

@@ -15,6 +15,7 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
 {
+    // Melanjutkan permintaan hanya jika pengguna yang login memiliki peran admin.
     if (auth()->check() && auth()->user()->role === 'admin') {
         return $next($request);
     }

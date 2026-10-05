@@ -23,6 +23,7 @@ class Create extends Component
     public $catatan;
     public $jemputan;
 
+    // Mengambil armada yang dipilih dan mengisi nama serta email dari akun pengguna.
     public function mount($armadaId)
     {
         $this->armada_id = $armadaId;
@@ -32,6 +33,7 @@ class Create extends Component
         $this->email = auth()->user()->email;
     }
 
+    // Aturan untuk memastikan data pemesanan sudah lengkap dan sesuai.
     protected $rules = [
         'nama_pemesan'      => 'required|string|max:255',
         'email'             => 'required|email',
@@ -53,6 +55,7 @@ class Create extends Component
 
     public function getJumlahHariProperty()
     {
+        // Menghitung lama sewa dari tanggal berangkat sampai tanggal pulang.
         if (!$this->tanggal_berangkat || !$this->tanggal_pulang) {
             return 0;
         }
@@ -65,6 +68,7 @@ class Create extends Component
 
     public function simpan()
     {
+        // Memeriksa data sebelum proses pemesanan dilanjutkan.
         $this->validate();
 
         // Cek apakah jumlah penumpang melebihi
@@ -72,6 +76,7 @@ class Create extends Component
         $permintaanKhusus = (int) $this->jumlah_penumpang > (int) $this->armada->kapasitas;
 
         // Cek bentrok jadwal / double booking
+        // Memeriksa apakah armada sudah dipesan pada rentang tanggal yang sama.
         $bentrok = Pemesanan::where('armada_id', $this->armada_id)
             ->whereIn('status', ['Menunggu', 'Disetujui'])
             ->where(function ($query) {
@@ -108,6 +113,7 @@ class Create extends Component
         }
 
         // Simpan pemesanan
+        // Menyimpan data pemesanan baru dengan status awal menunggu.
         $pemesanan = Pemesanan::create([
             'kode_pemesanan'    => 'BOOK-' . strtoupper(uniqid()),
             'user_id'           => auth()->id(),
@@ -137,5 +143,6 @@ class Create extends Component
         }
 
 
+        // Membuka halaman sukses setelah data pemesanan tersimpan.
 return redirect()->route('pemesanan.sukses', $pemesanan->id);    }
 }

@@ -11,6 +11,7 @@ class TentangKami extends Component
 {
     public function render()
     {
+        // Mengambil isi halaman tentang kami dari tabel pengaturan.
         return view('livewire.tentang-kami', [
             'hero_desc' => Setting::get('tentang_hero_desc'),
             'sejarah_1' => Setting::get('tentang_sejarah_1'),

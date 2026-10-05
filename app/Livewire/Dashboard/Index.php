@@ -13,6 +13,7 @@ class Index extends Component
 {
     public function render()
     {
+        // Menghitung jumlah pemesanan per bulan untuk grafik dashboard.
         // 1. Hitung total Pemesanan per bulan dari Januari (1) s/d Desember (12) di tahun ini
         $pemesananPerBulan = Pemesanan::select(
                 DB::raw('MONTH(created_at) as bulan'),
@@ -29,6 +30,7 @@ class Index extends Component
             $dataGrafik[] = $pemesananPerBulan[$i] ?? 0;
         }
 
+        // Mengirim ringkasan jumlah data dan grafik ke tampilan dashboard admin.
         return view('livewire.dashboard.index', [
             'totalArmada'    => Armada::count(),
             'totalPemesanan' => Pemesanan::count(),

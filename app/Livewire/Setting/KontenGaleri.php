@@ -12,12 +12,14 @@ class KontenGaleri extends Component
 
     public function mount()
     {
+        // Mengambil judul dan deskripsi galeri untuk ditampilkan pada formulir admin.
         $this->galeri_judul     = Setting::get('galeri_judul', 'Galeri Dokumentasi');
         $this->galeri_deskripsi = Setting::get('galeri_deskripsi', 'Jelajahi kumpulan foto kegiatan, armada bus pariwisata, material toko bangunan, dan pengerjaan proyek konstruksi Putra Limas.');
     }
 
     public function simpan()
     {
+        // Memeriksa lalu menyimpan judul dan deskripsi halaman galeri.
         $this->validate([
             'galeri_judul'     => 'required|string',
             'galeri_deskripsi' => 'required|string',

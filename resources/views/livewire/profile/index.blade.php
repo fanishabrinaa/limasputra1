@@ -1,3 +1,4 @@
+{{-- Form untuk memperbarui informasi profil dan kata sandi akun. --}}
 <div class="max-w-3xl mx-auto px-4 md:px-0 py-10 space-y-6">
 
     <!-- PAGE HEADER -->

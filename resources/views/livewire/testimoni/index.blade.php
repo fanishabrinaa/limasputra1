@@ -1,3 +1,4 @@
+{{-- Halaman admin untuk mengelola, menyaring, dan menyetujui testimoni. --}}
 <div class="p-6 md:p-8">
     <div class="flex justify-between items-center mb-6">
         <div>

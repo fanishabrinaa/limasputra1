@@ -12,11 +12,13 @@ class Publik extends Component
 
     public function setFilter(string $kategori)
     {
+        // Mengganti kategori foto yang ditampilkan pada galeri publik.
         $this->filterKategori = $kategori;
     }
 
     public function render()
     {
+        // Mengambil foto sesuai filter beserta judul dan deskripsi galeri.
         $query = Galeri::latest();
 
         if ($this->filterKategori !== 'Semua') {

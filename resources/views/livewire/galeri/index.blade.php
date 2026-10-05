@@ -1,3 +1,4 @@
+{{-- Halaman admin untuk mengatur teks galeri dan mengelola foto dokumentasi. --}}
 <div class="space-y-6">
     <!-- PAGE HEADER -->
     <div class="bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">

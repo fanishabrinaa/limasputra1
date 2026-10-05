@@ -23,6 +23,7 @@ class Kontak extends Component
 
     public function render()
     {
+        // Mengambil informasi kontak perusahaan dari tabel pengaturan.
         return view('livewire.kontak', [
             'alamat'  => Setting::get('alamat'),
             'telepon' => Setting::get('telepon'),
@@ -35,14 +36,17 @@ class Kontak extends Component
 
     public function kirim()
     {
+        // Honeypot ini membantu mengabaikan pengiriman otomatis dari bot.
         if (!empty($this->website)) {
         $this->reset(['nama', 'whatsapp', 'email', 'pesan']);
         $this->terkirim = true;
         return;
         }
         
+        // Memeriksa isian pesan sebelum menyimpannya.
         $this->validate();
 
+        // Menyimpan pesan pengunjung ke tabel pesan masuk.
         PesanMasuk::create([
             'nama' => $this->nama,
             'whatsapp' => $this->whatsapp,

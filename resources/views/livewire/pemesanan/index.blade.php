@@ -10,6 +10,7 @@
             <p class="text-sm text-slate-500 mt-1">Riwayat transaksi dan status booking armada bus dari customer.</p>
         </div>
 
+        {{-- Pilihan ini menyaring daftar pemesanan berdasarkan statusnya. --}}
         <!-- FILTER STATUS -->
         <div class="flex items-center gap-3 bg-slate-50 border border-slate-200/80 p-2 rounded-2xl">
             <label class="text-xs font-bold uppercase tracking-wider text-slate-500 pl-2">Filter Status:</label>

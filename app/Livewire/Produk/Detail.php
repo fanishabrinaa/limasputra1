@@ -11,6 +11,7 @@ class Detail extends Component
 
     public function mount($id)
     {
+        // Mengambil detail produk berdasarkan ID dari alamat halaman.
         $this->produk = ProdukBangunan::findOrFail($id);
     }
 

@@ -18,10 +18,12 @@ class ResetUserPassword implements ResetsUserPasswords
      */
     public function reset(User $user, array $input): void
     {
+        // Memeriksa kata sandi baru sebelum memperbarui akun pengguna.
         Validator::make($input, [
             'password' => $this->passwordRules(),
         ])->validate();
 
+        // Menyimpan kata sandi baru pada akun yang sedang dipulihkan.
         $user->forceFill([
             'password' => $input['password'],
         ])->save();

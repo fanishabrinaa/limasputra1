@@ -15,6 +15,7 @@ trait ProfileValidationRules
      */
     protected function profileRules(?int $userId = null): array
     {
+        // Menggabungkan aturan nama dan email untuk formulir profil.
         return [
             'name' => $this->nameRules(),
             'email' => $this->emailRules($userId),
@@ -28,6 +29,7 @@ trait ProfileValidationRules
      */
     protected function nameRules(): array
     {
+        // Nama wajib diisi dan dibatasi panjangnya.
         return ['required', 'string', 'max:255'];
     }
 
@@ -38,6 +40,7 @@ trait ProfileValidationRules
      */
     protected function emailRules(?int $userId = null): array
     {
+        // Email harus valid dan tidak boleh sama dengan email pengguna lain.
         return [
             'required',
             'string',

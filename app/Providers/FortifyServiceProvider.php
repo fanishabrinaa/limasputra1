@@ -28,6 +28,7 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Mengatur proses autentikasi, halaman autentikasi, dan batas percobaan.
         $this->configureActions();
         $this->configureViews();
         $this->configureRateLimiting();
@@ -38,6 +39,7 @@ class FortifyServiceProvider extends ServiceProvider
      */
     private function configureActions(): void
     {
+        // Menghubungkan proses daftar, reset kata sandi, dan respons login khusus.
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
         Fortify::createUsersUsing(CreateNewUser::class);
 
@@ -52,6 +54,7 @@ class FortifyServiceProvider extends ServiceProvider
      */
     private function configureViews(): void
     {
+        // Menentukan halaman yang dipakai untuk setiap proses autentikasi.
         Fortify::loginView(fn () => view('pages.auth.login'));
         Fortify::verifyEmailView(fn () => view('pages.auth.verify-email'));
         Fortify::twoFactorChallengeView(fn () => view('pages.auth.two-factor-challenge'));
@@ -68,6 +71,7 @@ class FortifyServiceProvider extends ServiceProvider
      */
     private function configureRateLimiting(): void
     {
+        // Membatasi jumlah percobaan login, verifikasi dua langkah, dan passkey.
         RateLimiter::for('two-factor', function (Request $request) {
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });

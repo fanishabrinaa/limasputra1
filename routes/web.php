@@ -37,6 +37,7 @@ use App\Livewire\Profile\Index as ProfileIndex;
 // Route::view('/', 'welcome')->name('home');
 
 
+// Route untuk halaman yang memerlukan login dan verifikasi akun.
 Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
@@ -55,6 +56,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
+    // Halaman pengaturan konten khusus admin.
     Route::get('/setting/konten-unit-usaha', \App\Livewire\Setting\KontenUnitUsaha::class)->name('setting.konten-unit-usaha');
 });
 
@@ -66,6 +68,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 });
 
 // Wajib login
+// Halaman pemesanan dan profil hanya bisa dibuka setelah pengguna login.
 Route::middleware(['auth'])->group(function () {
     Route::get('/pemesanan/{armadaId}', PemesananCreate::class)->name('pemesanan.create');
     Route::get('/pesanan-saya', PemesananRiwayat::class)->name('pemesanan.riwayat');
@@ -74,6 +77,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Publik
+// Halaman informasi yang bisa dibuka oleh semua pengunjung.
 Route::get('/', Beranda::class)->name('beranda');
 Route::get('/tentang-kami', TentangKami::class)->name('about');
 Route::get('/konstruksi', Konstruksi::class)->name('konstruksi');
@@ -89,6 +93,7 @@ Route::get('/produk/{id}', ProdukDetail::class)->name('produk.detail');
 Route::get('/galeri-publik', GaleriPublik::class)->name('galeri.publik');
 
 // Sitemap untuk Google (publik, di luar grup admin)
+// Menyusun sitemap dari halaman publik dan data armada serta produk.
 Route::get('/sitemap.xml', function () {
     $armadas = \App\Models\Armada::select('id', 'updated_at')->get();
     $produk = \App\Models\ProdukBangunan::select('id', 'updated_at')->get();
@@ -165,6 +170,7 @@ Route::get('/sitemap.xml', function () {
 });
 
 // Admin
+// Route untuk mengelola data website yang hanya bisa diakses oleh admin.
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/armada', Armada::class)->name('armada');

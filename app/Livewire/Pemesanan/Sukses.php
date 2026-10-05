@@ -11,6 +11,7 @@ class Sukses extends Component
 
     public function mount($id)
     {
+        // Mengambil detail pesanan milik pengguna yang sedang login.
         $this->pemesanan = Pemesanan::with('armada')
             ->where('user_id', auth()->id())
             ->findOrFail($id);
@@ -18,6 +19,7 @@ class Sukses extends Component
 
     public function getLinkWaProperty()
     {
+        // Menyusun pesan konfirmasi dan tautan WhatsApp dari data pesanan.
         $armada = $this->pemesanan->armada;
 
         $keteranganKapasitas = '';

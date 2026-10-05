@@ -33,6 +33,7 @@ class Konten extends Component
 
     public function mount()
     {
+        // Mengisi formulir dari konten tentang kami yang tersimpan, dengan nilai awal jika belum ada.
         $this->tentang_hero_desc = Setting::get('tentang_hero_desc', 'Mengenal lebih dekat perjalanan, nilai-nilai, dan komitmen kami dalam melayani masyarakat Indonesia.');
         $this->tentang_sejarah_1 = Setting::get('tentang_sejarah_1', 'Berdiri sejak puluhan tahun lalu, kami tumbuh dari sebuah unit usaha kecil menjadi grup bisnis terpadu.');
         $this->tentang_sejarah_2 = Setting::get('tentang_sejarah_2', 'Seiring berjalannya waktu, komitmen kami pada kualitas membuat kami dipercaya oleh ratusan mitra bisnis.');
@@ -82,6 +83,7 @@ class Konten extends Component
 
     public function tambahItem($field)
     {
+        // Menambahkan baris baru sesuai jenis daftar yang sedang diedit.
         $template = match ($field) {
             'mengapa_kami'       => ['icon' => 'shield', 'title' => '', 'desc' => ''],
             'tentang_milestones' => ['year' => '', 'desc' => ''],
@@ -95,6 +97,7 @@ class Konten extends Component
 
     public function hapusItem($field, $index)
     {
+        // Menghapus satu baris dari daftar lalu merapikan kembali urutannya.
         unset($this->{$field}[$index]);
         $this->{$field} = array_values($this->{$field});
     }
@@ -106,6 +109,7 @@ class Konten extends Component
 
     public function simpan()
     {
+        // Memeriksa semua konten sebelum menyimpan perubahan halaman tentang kami.
         $this->validate([
             'tentang_hero_desc'     => 'required|string',
             'tentang_sejarah_1'     => 'required|string',
@@ -142,6 +146,7 @@ class Konten extends Component
             'tentang_values.*.desc' => 'required|string',
         ]);
 
+        // Menyimpan teks dan daftar konten ke tabel pengaturan.
         Setting::set('tentang_hero_desc', $this->tentang_hero_desc);
         Setting::set('tentang_sejarah_1', $this->tentang_sejarah_1);
         Setting::set('tentang_sejarah_2', $this->tentang_sejarah_2);

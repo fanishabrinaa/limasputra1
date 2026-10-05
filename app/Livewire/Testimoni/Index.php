@@ -26,6 +26,7 @@ class Index extends Component
 
     public function render()
     {
+        // Mengambil testimoni sesuai filter dan daftar armada untuk formulir admin.
         $query = Testimoni::with(['armada', 'user'])->latest();
 
         if ($this->filterTampilkan !== '') {
@@ -40,6 +41,7 @@ class Index extends Component
 
     public function toggleTampilkan($id)
     {
+        // Mengubah apakah testimoni ditampilkan kepada pengunjung.
         $t = Testimoni::findOrFail($id);
         $t->tampilkan = !$t->tampilkan;
         $t->save();
@@ -55,6 +57,7 @@ class Index extends Component
 
     public function simpan()
     {
+        // Memeriksa lalu membuat atau memperbarui data testimoni.
         $this->validate();
 
         Testimoni::updateOrCreate(
@@ -76,6 +79,7 @@ class Index extends Component
 
     public function edit($id)
     {
+        // Mengambil data testimoni untuk mengisi formulir edit.
         $data = Testimoni::findOrFail($id);
         $this->testimoni_id = $data->id;
         $this->armada_id = $data->armada_id;
@@ -91,6 +95,7 @@ class Index extends Component
 
     public function hapus($id)
     {
+        // Menghapus testimoni yang dipilih dari database.
         Testimoni::findOrFail($id)->delete();
         session()->flash('message', 'Testimoni berhasil dihapus.');
     }

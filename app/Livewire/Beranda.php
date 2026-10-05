@@ -13,6 +13,7 @@ class Beranda extends Component
 {
     public function render()
     {
+        // Mengambil konten beranda dari pengaturan serta menghitung jumlah armada dan produk.
         return view('livewire.beranda', [
             'nama_perusahaan' => Setting::get('nama_perusahaan', 'Putra Limas'),
             'deskripsi'       => Setting::get('deskripsi', 'Menghadirkan solusi terpadu dalam sektor konstruksi, retail material bangunan, dan transportasi pariwisata dengan standar profesionalisme tertinggi.'),

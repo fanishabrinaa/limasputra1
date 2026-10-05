@@ -38,12 +38,14 @@ class Index extends Component
 
     public function mount()
     {
+        // Mengambil judul dan deskripsi katalog dari tabel pengaturan.
         $this->katalog_judul     = Setting::get('katalog_judul', 'Layanan Sewa Bus Pariwisata Profesional');
         $this->katalog_deskripsi = Setting::get('katalog_deskripsi', 'Putra Limas telah berpengalaman lebih dari satu dekade dalam menyediakan jasa transportasi pariwisata.');
     }
 
     protected function rules()
     {
+        // Memeriksa data armada dan jenis file gambar sebelum disimpan.
         return [
             'nama_bus'   => 'required|string|max:255',
             'plat_nomor' => 'required|string|max:50',
@@ -61,6 +63,7 @@ class Index extends Component
 
     public function render()
     {
+        // Mengambil daftar armada beserta fasilitas untuk ditampilkan di halaman admin.
         return view('livewire.armada.index', [
             'daftarArmada' => Armada::with('fasilitas')->latest()->get(),
             'daftarFasilitas' => Fasilitas::all(),
@@ -70,6 +73,7 @@ class Index extends Component
     // ===== Aksi: Konten Teks Hero Katalog =====
     public function simpanTeks()
     {
+        // Memeriksa lalu menyimpan judul dan deskripsi katalog.
         $this->validate([
             'katalog_judul'     => 'required|string',
             'katalog_deskripsi' => 'required|string',
@@ -104,22 +108,26 @@ class Index extends Component
 
     public function simpan()
     {
+        // Memeriksa isian sebelum menyimpan data dan gambar armada.
         $this->validate();
 
         $path = $this->gambar_lama;
 
         if ($this->gambar) {
+            // Menyimpan gambar utama ke penyimpanan publik.
             $path = $this->gambar->store('armada', 'public');
         }
 
         $pathsGaleri = $this->galeri_lama ?? [];
 
         if ($this->galeriBaru) {
+            // Menyimpan setiap foto baru dan menambahkan lokasinya ke daftar galeri.
             foreach ($this->galeriBaru as $file) {
                 $pathsGaleri[] = $file->store('armada', 'public');
             }
         }
 
+        // Membuat data armada baru atau memperbarui data yang sedang diedit.
         $armada = Armada::updateOrCreate(
             ['id' => $this->armada_id],
             [
@@ -133,6 +141,7 @@ class Index extends Component
             ]
         );
 
+        // Menyesuaikan fasilitas armada dengan pilihan pada formulir.
         $armada->fasilitas()->sync($this->selectedFasilitas);
 
         $this->showForm = false;
@@ -142,6 +151,7 @@ class Index extends Component
 
     public function edit($id)
     {
+        // Mengambil data armada dan fasilitas untuk mengisi formulir edit.
         $data = Armada::with('fasilitas')->findOrFail($id);
 
         $this->armada_id = $data->id;
@@ -172,6 +182,7 @@ class Index extends Component
             return;
         }
 
+        // Mengambil data armada agar foto yang dipilih dapat dihapus dari galeri.
         $armada = Armada::findOrFail($this->armada_id);
 
         $galeri = $armada->galeri ?? [];
@@ -201,6 +212,7 @@ class Index extends Component
 
     public function hapus($id)
     {
+        // Menghapus data armada yang dipilih dari database.
         Armada::findOrFail($id)->delete();
 
         session()->flash('message', 'Data armada berhasil dihapus.');

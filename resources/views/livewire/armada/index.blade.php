@@ -1,3 +1,4 @@
+{{-- Halaman admin untuk mengelola data armada, fasilitas, dan gambar katalog. --}}
 <div class="space-y-6">
 
     <!-- PAGE HEADER -->
